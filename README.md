@@ -444,3 +444,6 @@ Realmente, solamente necesitamos estos 3 registros, no más. Porque la aplicacci
 
 ![image](https://github.com/user-attachments/assets/f65130c4-24e0-4774-8b0a-8d801523117a)
 
+![image](https://github.com/user-attachments/assets/6e0c4437-a94f-4143-b668-924fe73eae60)
+
+Y seleccionamos GitBash.
