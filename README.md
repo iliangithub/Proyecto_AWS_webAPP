@@ -507,23 +507,22 @@ Tenemos que estar en:
 ```
 mvn install
 ```
->Cuando ejecutas el comando mvn install, Maven realiza una serie de acciones importantes relacionadas con la construcción y distribución de tu proyecto. Aquí está el proceso detallado:
 >
 >### Pasos que realiza mvn install:
-**Limpieza previa (si es necesario):**
-Si has configurado pasos de limpieza, como eliminar los artefactos anteriores, esto puede suceder antes de compilar.
+>**Limpieza previa (si es necesario):**
+>Si has configurado pasos de limpieza, como eliminar los artefactos anteriores, esto puede suceder antes de compilar.
 >
 >**Compilación (compile):**
-Maven compila el código fuente del proyecto (normalmente dentro del directorio src/main/java) y genera los archivos .class.
+>Maven compila el código fuente del proyecto (normalmente dentro del directorio src/main/java) y genera los archivos .class.
 >
 >**Pruebas (test):**
-Se ejecutan las pruebas unitarias (si tienes tests configurados, como en el directorio src/test/java). Maven usará frameworks de pruebas como JUnit o TestNG.
+>Se ejecutan las pruebas unitarias (si tienes tests configurados, como en el directorio src/test/java). Maven usará frameworks de pruebas como JUnit o TestNG.
 >
 >**Empaquetado (package):**
-Maven empaqueta el proyecto en un archivo ejecutable, generalmente un JAR o WAR (dependiendo del tipo de proyecto). Este archivo contiene el código compilado y las dependencias.
+>Maven empaqueta el proyecto en un archivo ejecutable, generalmente un JAR o WAR (dependiendo del tipo de proyecto). Este archivo contiene el código compilado y las dependencias.
 >
 >**Instalación (install):**
->En este paso, el artefacto generado (el JAR, WAR u otro empaquetado) se coloca en el repositorio local de Maven, que se encuentra en tu máquina, en el directorio ~/.m2/repository (o en la carpeta de configuración de Maven si has cambiado la ruta). Esto permite que otros >proyectos que dependan de este artefacto lo puedan utilizar.
+>En este paso, el artefacto generado (el JAR, WAR u otro empaquetado) se coloca en el repositorio local de Maven, que se encuentra en tu máquina, en el directorio ~/.m2/repository (o en la carpeta de >configuración de Maven si has cambiado la ruta). Esto permite que otros >proyectos que dependan de este artefacto lo puedan utilizar.
 >
 **Maven guarda el artefacto compilado y empaquetado (por ejemplo, un archivo .jar o .war) en el subdirectorio target dentro del directorio raíz de tu proyecto.**
 
