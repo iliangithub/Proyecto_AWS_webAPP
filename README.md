@@ -534,7 +534,7 @@ mvn install
 
 Ahora, voy a subir todo a S3 bucket, y no es posible sin la autenticación.
 
-## Crear un usuario IAM y S3 bucket.
+## Crear un usuario IAM y subir el artefacto a S3 bucket.
 
 ![image](https://github.com/user-attachments/assets/96038202-4470-4f40-921c-4fd3244fe0ef)
 
