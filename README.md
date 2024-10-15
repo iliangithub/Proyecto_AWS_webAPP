@@ -419,11 +419,15 @@ Y creamos el registro. Ahora hacemos lo mismo con el resto.
 > [!TIP]
 >
 > En mi caso, la interfaz me aparece así:
+>
 >![image](https://github.com/user-attachments/assets/7b984d3b-f0b5-4241-a259-533d09f185c9)
+>
 > Si cambiamos el asistente, se verá de esta forma más compleja:
 >
 > ![image](https://github.com/user-attachments/assets/bafd79c1-4d98-4fb9-874f-0eff7e82aeae)
 > 
 > ![image](https://github.com/user-attachments/assets/addd5d5d-2045-4960-a8ed-dbf3f6763fbe)
+> 
 > Y le damos a definir un registro simple.
+> 
 > ![image](https://github.com/user-attachments/assets/24743759-e067-4bb4-b9b8-bac0188377f7)
