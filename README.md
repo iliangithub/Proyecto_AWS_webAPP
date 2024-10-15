@@ -489,3 +489,8 @@ Prerequisitos:
   choco install corretto11jdk -y
   ```
 Son herramientas esenciales que se utilizan para montar y construir artefactos en el desarrollo de software, especialmente en proyectos de Java.
+
+- AWS CLI
+  ```
+  choco install awscli -y
+  ```
