@@ -479,6 +479,11 @@ Prerequisitos:
   ```
   choco install maven -y
   ```
+
+  ```
+  mvn --version
+  ```
+  
 - JDK
   ```
   choco install corretto11jdk -y
