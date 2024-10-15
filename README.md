@@ -725,7 +725,7 @@ Este es el resultado.
 > Si nos sale esto, es 100% problema del TomCat.
 > ```
 > ● tomcat10.service - Apache Tomcat 10 Web Application Server
-     Loaded: loaded (/usr/lib/systemd/system/tomcat10.service; enabled; preset: enabled)
+>     Loaded: loaded (/usr/lib/systemd/system/tomcat10.service; enabled; preset: enabled)
      Active: active (running) since Tue 2024-10-15 19:33:56 UTC; 3min 1s ago
        Docs: https://tomcat.apache.org/tomcat-10.0-doc/index.html
     Process: 12013 ExecStartPre=/usr/libexec/tomcat10/tomcat-update-policy.sh (code=exited, status=0/SUCCESS)
@@ -734,9 +734,9 @@ Este es el resultado.
      Memory: 78.4M (peak: 78.6M)
         CPU: 3.816s
      CGroup: /system.slice/tomcat10.service
-             └─12018 /usr/lib/jvm/java-11-openjdk-amd64/bin/java -Djava.util.logging.config.file=/var/lib/tomcat10/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Dja>
-
-Oct 15 19:33:58 ip-172-31-40-172 tomcat10[12018]: OpenSSL successfully initialized [OpenSSL 3.0.13 30 Jan 2024]
+>            └─12018 /usr/lib/jvm/java-11-openjdk-amd64/bin/java -Djava.util.logging.config.file=/var/lib/tomcat10/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Dja>
+>
+>Oct 15 19:33:58 ip-172-31-40-172 tomcat10[12018]: OpenSSL successfully initialized [OpenSSL 3.0.13 30 Jan 2024]
 Oct 15 19:33:59 ip-172-31-40-172 tomcat10[12018]: Initializing ProtocolHandler ["http-nio-8080"]
 Oct 15 19:33:59 ip-172-31-40-172 tomcat10[12018]: Server initialization in [1896] milliseconds
 Oct 15 19:33:59 ip-172-31-40-172 tomcat10[12018]: Starting service [Catalina]
@@ -746,5 +746,5 @@ Oct 15 19:34:01 ip-172-31-40-172 tomcat10[12018]: At least one JAR was scanned f
 Oct 15 19:34:01 ip-172-31-40-172 tomcat10[12018]: Deployment of web application directory [/var/lib/tomcat10/webapps/ROOT] has finished in [1,760] ms
 Oct 15 19:34:01 ip-172-31-40-172 tomcat10[12018]: Starting ProtocolHandler ["http-nio-8080"]
 Oct 15 19:34:01 ip-172-31-40-172 tomcat10[12018]: Server startup in [1871] milliseconds
-
+>
 > ```
