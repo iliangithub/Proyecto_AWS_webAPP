@@ -494,3 +494,21 @@ Son herramientas esenciales que se utilizan para montar y construir artefactos e
   ```
   choco install awscli -y
   ```
+
+>[!WARNING]
+>Hay que reiniciar el ordenador, si los acabas de instalar. Por que, muy probablemente, no funcionen.
+>
+
+Ahora, vamos a construir el artefacto:
+
+Tenemos que estar en:
+![image](https://github.com/user-attachments/assets/3b1dff38-a825-4319-a0ab-396dcf230b35)
+
+```
+mvn install
+```
+
+**Maven guarda el artefacto compilado y empaquetado (por ejemplo, un archivo .jar o .war) en el subdirectorio target dentro del directorio raíz de tu proyecto.**
+
+![image](https://github.com/user-attachments/assets/88c678ab-ec5e-42bd-9242-9ee849783a5a)
+
