@@ -241,7 +241,6 @@ sudo apt install openjdk-11-jdk -y
 
 #este si:
 sudo apt install tomcat10 tomcat10-admin tomcat10-docs tomcat10-common git -y
-
 sudo systemctl start tomcat10
 
 
@@ -658,6 +657,10 @@ sudo cp /tmp/vprofile-v2.war /var/lib/tomcat10/webapps/ROOT.war
 ```
 
 ```
+sudo systemctl daemon-reload
+```
+
+```
 sudo systemctl start tomcat10
 ```
 
@@ -700,3 +703,13 @@ Y creamos el grupo de destino o el Target Group.
 >
 > Esto obligado a poner el Certificado, si he puesto listener en el puerto 443, por lo tanto, voy a tener que quitarlo de momento, luego lo añadiré.
 > 
+
+Una vez esté hecho el balanceador.
+
+## Comprobar que funcione.
+
+Copiamos el enlace:
+
+![image](https://github.com/user-attachments/assets/407f59bf-bf85-4193-8fc3-2f6d79f6a11f)
+
+![image](https://github.com/user-attachments/assets/053cdda8-ef7a-4d09-b1b0-03864ba3de73)
