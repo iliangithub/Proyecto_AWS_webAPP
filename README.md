@@ -587,3 +587,5 @@ como podemos ver, aparece:
 
 ![image](https://github.com/user-attachments/assets/cd4be745-cb6a-4090-94d1-091811697b8a)
 
+dentro, está el artefacto:
+![image](https://github.com/user-attachments/assets/8002a733-7836-4ed2-80be-466641007579)
