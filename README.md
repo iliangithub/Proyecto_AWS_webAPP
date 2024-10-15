@@ -508,7 +508,7 @@ Tenemos que estar en:
 mvn install
 ```
 >
->### Pasos que realiza mvn install:
+>### Pasos que realiza `mvn install`:
 >**Limpieza previa (si es necesario):**
 >Si has configurado pasos de limpieza, como eliminar los artefactos anteriores, esto puede suceder antes de compilar.
 >
