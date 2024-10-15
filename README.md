@@ -236,3 +236,30 @@ sudo apt upgrade -y
 sudo apt install openjdk-11-jdk -y
 sudo apt install tomcat9 tomcat9-admin tomcat9-docs tomcat9-common git -y
 ```
+# Comprobaciones (podría fallar o haber errores)
+## Máquina MySQL.
+```
+sudo systemctl status mariadb
+```
+
+```
+mysql -u admin -padmin123 accounts
+```
+
+```
+SHOW tables;
+```
+
+Debería devolver esto:
++--------------------+
+| Tables_in_accounts |
++--------------------+
+| role               |
+| user               |
+| user_role          |
++--------------------+
+
+
+```
+quit
+```
