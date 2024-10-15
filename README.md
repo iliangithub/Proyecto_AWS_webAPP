@@ -447,3 +447,9 @@ Realmente, solamente necesitamos estos 3 registros, no más. Porque la aplicacci
 ![image](https://github.com/user-attachments/assets/6e0c4437-a94f-4143-b668-924fe73eae60)
 
 Y seleccionamos GitBash.
+
+![image](https://github.com/user-attachments/assets/f544e8b2-85f7-4ac0-b3ec-f36932244636)
+
+> [!WARNING]
+> GitBash ahora es el terminal por defecto.
+> 
