@@ -251,14 +251,11 @@ SHOW tables;
 ```
 
 Debería devolver esto:
-+--------------------+
 | Tables_in_accounts |
-+--------------------+
-| role               |
-| user               |
-| user_role          |
-+--------------------+
-
+| -------- |
+| role  |
+| user |
+| user_role |
 
 ```
 quit
