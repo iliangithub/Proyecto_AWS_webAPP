@@ -466,4 +466,21 @@ tenemos que modificar esta parte:
 
 ![image](https://github.com/user-attachments/assets/b8929f0c-d425-4d00-abeb-6d558af32276)
 
-y así pues añadir el registro DNS.
+y así pues añadir el registro DNS. Este es el resultado, lo tenemos que hacer con los 3:
+
+![image](https://github.com/user-attachments/assets/a836477a-2e6f-45e0-95cd-c231a117a91e)
+
+Y ahora, vamos a montar / construir el artefacto.
+
+## Construir el artefacto.
+
+Prerequisitos:
+- Maven
+  ```
+  choco install maven -y
+  ```
+- JDK
+  ```
+  choco install corretto11jdk -y
+  ```
+Son herramientas esenciales que se utilizan para montar y construir artefactos en el desarrollo de software, especialmente en proyectos de Java.
