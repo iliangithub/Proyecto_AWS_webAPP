@@ -748,4 +748,9 @@ Este es el resultado.
 >Oct 15 19:34:01 ip-172-31-40-172 tomcat10[12018]: Server startup in [1871] milliseconds
 > ```
 >
-> Y simplemente, tenemos que meter de nuevo allí el artefacto.
+> Y simplemente, tenemos que meter de nuevo allí el artefacto. En la carpeta de TomCat, "webapps"
+>
+> ![image](https://github.com/user-attachments/assets/c467c82b-845c-4a3e-975f-f7195b396ad9)
+>
+> En mi caso, para comprobar una cosa, he borrado la carpeta ROOT, que había dentro, y evidentemente, ya no tiene anda que mostrarme, pues eso, entonces el problema está en el artefacto.
+> 
