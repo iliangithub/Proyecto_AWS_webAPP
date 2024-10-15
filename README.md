@@ -544,3 +544,26 @@ No necesitamos, ningun acceso a la consola, solo necesitamos la clave de acceso 
 
 ![image](https://github.com/user-attachments/assets/db70ef15-b854-4d57-b4c7-08544b1b9bd6)
 
+![image](https://github.com/user-attachments/assets/17e56d00-27aa-407c-a726-7f37433202f2)
+
+![image](https://github.com/user-attachments/assets/41e0cbee-dd6f-42a9-a711-b1454b63151a)
+
+> [!WARNING]
+> **¿Cuál es el riesgo?**
+>
+
+![image](https://github.com/user-attachments/assets/d94dd8a3-fbb1-4f94-886e-6570572fbc69)
+
+descargo el .csv.
+
+![image](https://github.com/user-attachments/assets/d08e9eb6-2f81-48cd-9e9f-99c2f2570f13)
+
+y ahora en el CLI del Visual Studio:
+
+```
+aws configure
+```
+
+![image](https://github.com/user-attachments/assets/35ba71e6-c24a-4291-ad8e-7bf50885f8cf)
+
+![image](https://github.com/user-attachments/assets/d4f985fb-8a7d-46fb-ab8a-f8271230d42f)
