@@ -321,3 +321,41 @@ tcp   LISTEN 0      1024                             [::1]:11211         [::]:*
 
 ## Máquina TomCat-app01
 
+```
+systemctl status tomcat10
+```
+
+```
+● tomcat10.service - Apache Tomcat 10 Web Application Server
+     Loaded: loaded (/usr/lib/systemd/system/tomcat10.service; enabled; preset:>
+     Active: active (running) since Tue 2024-10-15 10:10:20 UTC; 2min 26s ago
+       Docs: https://tomcat.apache.org/tomcat-10.0-doc/index.html
+    Process: 5223 ExecStartPre=/usr/libexec/tomcat10/tomcat-update-policy.sh (c>
+   Main PID: 5228 (java)
+      Tasks: 28 (limit: 1130)
+     Memory: 104.9M (peak: 112.4M)
+        CPU: 6.126s
+     CGroup: /system.slice/tomcat10.service
+             └─5228 /usr/lib/jvm/java-11-openjdk-amd64/bin/java -Djava.util.log>
+
+Oct 15 10:10:46 ip-172-31-40-172 tomcat10[5228]: At least one JAR was scanned f>
+Oct 15 10:10:46 ip-172-31-40-172 tomcat10[5228]: Deployment of deployment descr>
+Oct 15 10:10:46 ip-172-31-40-172 tomcat10[5228]: Deploying deployment descripto>
+Oct 15 10:10:46 ip-172-31-40-172 tomcat10[5228]: The path attribute with value >
+Oct 15 10:10:46 ip-172-31-40-172 tomcat10[5228]: At least one JAR was scanned f>
+Oct 15 10:10:46 ip-172-31-40-172 tomcat10[5228]: Deployment of deployment descr>
+Oct 15 10:10:56 ip-172-31-40-172 tomcat10[5228]: Deploying deployment descripto>
+Oct 15 10:10:56 ip-172-31-40-172 tomcat10[5228]: The path attribute with value >
+Oct 15 10:10:57 ip-172-31-40-172 tomcat10[5228]: At least one JAR was scanned f>
+Oct 15 10:10:57 ip-172-31-40-172 tomcat10[5228]: Deployment of deployment descr
+
+
+LUEGO
+
+
+ls /var/lib/tomcat10/
+conf  lib  logs  policy  webapps  work
+
+
+Y WEBAPPS ES DONDE VAN A ESTAR PUES LAS APPS WEB.
+```
