@@ -718,7 +718,7 @@ Y este enlace, tenemos que pegarlo en el navegador.
 Este es el resultado.
 
 > [!WARNING]
-> Si nos sale algún tipo de error, es muy probable que sea por algo relacionado con el TomCat, hasta el momento, si se ha seguido todo al pié de la letra, es muy sencillo y automático, las máquinas están provisionadas, y no debería de haber problema en ese sentido.
+> Si nos sale algún tipo de error, es muy probable que sea por algo relacionado con el TomCat, hasta el momento, si se ha seguido todo al pié de la letra, es muy sencillo y automático, las máquinas están >provisionadas, y no debería de haber problema en ese sentido.
 >
 > ![image](https://github.com/user-attachments/assets/01fe5cbe-e39d-4cf6-8745-fb0558235df9)
 >
@@ -726,25 +726,24 @@ Este es el resultado.
 > ```
 > ● tomcat10.service - Apache Tomcat 10 Web Application Server
 >     Loaded: loaded (/usr/lib/systemd/system/tomcat10.service; enabled; preset: enabled)
-     Active: active (running) since Tue 2024-10-15 19:33:56 UTC; 3min 1s ago
-       Docs: https://tomcat.apache.org/tomcat-10.0-doc/index.html
-    Process: 12013 ExecStartPre=/usr/libexec/tomcat10/tomcat-update-policy.sh (code=exited, status=0/SUCCESS)
-   Main PID: 12018 (java)
-      Tasks: 28 (limit: 1130)
-     Memory: 78.4M (peak: 78.6M)
-        CPU: 3.816s
-     CGroup: /system.slice/tomcat10.service
+>     Active: active (running) since Tue 2024-10-15 19:33:56 UTC; 3min 1s ago
+>       Docs: https://tomcat.apache.org/tomcat-10.0-doc/index.html
+>    Process: 12013 ExecStartPre=/usr/libexec/tomcat10/tomcat-update-policy.sh (code=exited, status=0/SUCCESS)
+>   Main PID: 12018 (java)
+>      Tasks: 28 (limit: 1130)
+>     Memory: 78.4M (peak: 78.6M)
+>        CPU: 3.816s
+>     CGroup: /system.slice/tomcat10.service
 >            └─12018 /usr/lib/jvm/java-11-openjdk-amd64/bin/java -Djava.util.logging.config.file=/var/lib/tomcat10/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Dja>
 >
 >Oct 15 19:33:58 ip-172-31-40-172 tomcat10[12018]: OpenSSL successfully initialized [OpenSSL 3.0.13 30 Jan 2024]
-Oct 15 19:33:59 ip-172-31-40-172 tomcat10[12018]: Initializing ProtocolHandler ["http-nio-8080"]
-Oct 15 19:33:59 ip-172-31-40-172 tomcat10[12018]: Server initialization in [1896] milliseconds
-Oct 15 19:33:59 ip-172-31-40-172 tomcat10[12018]: Starting service [Catalina]
-Oct 15 19:33:59 ip-172-31-40-172 tomcat10[12018]: Starting Servlet engine: [Apache Tomcat/10.1.16 (Ubuntu)]
-Oct 15 19:33:59 ip-172-31-40-172 tomcat10[12018]: Deploying web application directory [/var/lib/tomcat10/webapps/ROOT]
-Oct 15 19:34:01 ip-172-31-40-172 tomcat10[12018]: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs wer>
-Oct 15 19:34:01 ip-172-31-40-172 tomcat10[12018]: Deployment of web application directory [/var/lib/tomcat10/webapps/ROOT] has finished in [1,760] ms
-Oct 15 19:34:01 ip-172-31-40-172 tomcat10[12018]: Starting ProtocolHandler ["http-nio-8080"]
-Oct 15 19:34:01 ip-172-31-40-172 tomcat10[12018]: Server startup in [1871] milliseconds
->
+>Oct 15 19:33:59 ip-172-31-40-172 tomcat10[12018]: Initializing ProtocolHandler ["http-nio-8080"]
+>Oct 15 19:33:59 ip-172-31-40-172 tomcat10[12018]: Server initialization in [1896] milliseconds
+>Oct 15 19:33:59 ip-172-31-40-172 tomcat10[12018]: Starting service [Catalina]
+>Oct 15 19:33:59 ip-172-31-40-172 tomcat10[12018]: Starting Servlet engine: [Apache Tomcat/10.1.16 (Ubuntu)]
+>Oct 15 19:33:59 ip-172-31-40-172 tomcat10[12018]: Deploying web application directory [/var/lib/tomcat10/webapps/ROOT]
+>Oct 15 19:34:01 ip-172-31-40-172 tomcat10[12018]: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs wer>
+>Oct 15 19:34:01 ip-172-31-40-172 tomcat10[12018]: Deployment of web application directory [/var/lib/tomcat10/webapps/ROOT] has finished in [1,760] ms
+>Oct 15 19:34:01 ip-172-31-40-172 tomcat10[12018]: Starting ProtocolHandler ["http-nio-8080"]
+>Oct 15 19:34:01 ip-172-31-40-172 tomcat10[12018]: Server startup in [1871] milliseconds
 > ```
