@@ -380,3 +380,5 @@ Este es nuestro archivo /etc/hosts:
 >### ¿Por qué necesitas un servidor DNS como Route 53?
 >Cuando quieres que tu dominio sea accesible para cualquier persona en internet (porque no tienen tu archivo /etc/hosts/), los navegadores y sistemas operativos de los usuarios no van a consultar tu archivo /etc/hosts. **En su lugar, consultan servidores DNS distribuidos por todo el mundo**. Route 53 es un servicio de DNS que permite gestionar estos mapeos de forma centralizada y global, permitiendo que cualquier persona pueda acceder a tu dominio, no solo una máquina local.
 >
+
+# Route 53 (DNS Server)
