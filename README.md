@@ -421,6 +421,7 @@ Y lo copio en el registro:
 Y creamos el registro. Ahora hacemos lo mismo con el resto.
 
 > [!TIP]
+> **ESTO ES OPCIONAL.**
 >
 > En mi caso, la interfaz me aparece así:
 >
