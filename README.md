@@ -690,10 +690,12 @@ Y creamos el grupo de destino o el Target Group.
 
 > [!WARNING]
 >
->Debe escuchar en el puerto 80 y 443.
+>Debe escuchar en el puerto 80 y 443 (443 opcional si tengo dominio).
+> 
 > ![image](https://github.com/user-attachments/assets/615ff3aa-635c-4911-8872-eea163615e12)
 >
 >(Para que funcione el HTTPS)
+> 
 >![image](https://github.com/user-attachments/assets/720bbb15-5f39-4513-9ce5-46246c95c825)
 >
 > Esto obligado a poner el Certificado, si he puesto listener en el puerto 443, por lo tanto, voy a tener que quitarlo de momento, luego lo añadiré.
