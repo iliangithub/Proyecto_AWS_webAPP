@@ -590,3 +590,5 @@ como podemos ver, aparece:
 
 dentro, está el artefacto:
 ![image](https://github.com/user-attachments/assets/8002a733-7836-4ed2-80be-466641007579)
+
+### Descargar y Desplegar el artefacto (En la instancia TomCat)
