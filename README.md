@@ -207,7 +207,7 @@ sudo rabbitmqctl set_user_tags test administrator
 sudo systemctl restart rabbitmq-server
 ```
 
-## Para la app01:
+## Para la TomCat-app01:
 
 **Nombre y etiquetas:**
 
