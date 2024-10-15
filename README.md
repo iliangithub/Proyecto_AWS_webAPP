@@ -578,3 +578,12 @@ Y en teoría, con este comando, ya debería de estar:
 aws s3 cp target/vprofile-v2.war s3://forilianprojectbucket-delta
 ```
 ![image](https://github.com/user-attachments/assets/da4610ca-1087-4c88-bcbf-2d8899fd901e)
+
+Y ya debería haberse subido, vamos a comprobarlo, vamos a la barra de búsqueda de AWS y buscamos ``S3`
+
+![image](https://github.com/user-attachments/assets/70685b4c-03c4-4e23-9dd0-9326edb94181)
+
+como podemos ver, aparece:
+
+![image](https://github.com/user-attachments/assets/cd4be745-cb6a-4090-94d1-091811697b8a)
+
