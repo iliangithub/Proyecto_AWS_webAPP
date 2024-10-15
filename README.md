@@ -243,6 +243,17 @@ sudo apt install openjdk-11-jdk -y
 sudo apt install tomcat10 tomcat10-admin tomcat10-docs tomcat10-common git -y
 
 sudo systemctl start tomcat10
+
+
+
+
+
+# esto sirve para ahorrarnos un paso más adelante y automatizar
+#para descargar el cli del aws
+sudo apt install unzip
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
 ```
 # Comprobaciones (podría fallar o haber errores).
 ## Máquina MySQL.
@@ -589,6 +600,101 @@ como podemos ver, aparece:
 ![image](https://github.com/user-attachments/assets/cd4be745-cb6a-4090-94d1-091811697b8a)
 
 dentro, está el artefacto:
+
 ![image](https://github.com/user-attachments/assets/8002a733-7836-4ed2-80be-466641007579)
 
 ### Descargar y Desplegar el artefacto (En la instancia TomCat)
+Prerequisitos:
+- El AWS CLI instalado en el TomCat.
+- Descargarlo y desplegarlo.
+
+> [!WARNING]
+> **PROBLEMA:**
+>¿Cómo vamos a autenticarnos ahora, desde el TomCat, para poder descargar desde el S3 bucket?
+>  
+>Anteriormente, utilizamos el AWS CLI y utilizamos las claves IAM para poder autenticarme, al Usuario ese en cuestión que creamos en el IAM, para poder "pushear", subir el artefacto.
+>
+> Podríamos volver a hacerlo de esa misma manera (Es más larga y compleja).
+> Y es a través de los Roles IAM.
+> Creamos un Rol y ponemos/adjuntamos, ese rol a la instancia.
+> 
+
+![image](https://github.com/user-attachments/assets/ec734c50-9174-4825-b07c-ae537bd2c381)
+
+El permiso:
+
+![image](https://github.com/user-attachments/assets/4d8db502-3a97-4c17-b0a6-48092dc74556)
+
+Y le ponemos este nombre:
+
+![image](https://github.com/user-attachments/assets/b9f246d7-d936-4ce3-b3be-dca6da0bfb80)
+
+Lo creamos, volvemos a la instancia y editamos:
+
+![image](https://github.com/user-attachments/assets/2375a8cf-168f-4968-9347-fdcc57ca0af6)
+
+Le atribuimos el rol:
+
+![image](https://github.com/user-attachments/assets/aa22611d-aebe-4053-9584-be2bb70868a7)
+
+Como tenemos privilegios asociados a esta instancia, podemos ejecutar el comando de AWS, sin tener que autenticarnos:
+
+![image](https://github.com/user-attachments/assets/b73ebc41-7496-442f-98a8-e631ed295379)
+
+```
+aws s3 cp s3://forilianprojectbucket-delta/vprofile-v2.war /tmp/
+```
+
+```
+sudo systemctl stop tomcat10
+```
+
+```
+sudo rm -rf /var/lib/tomcat10/webapps/ROOT
+```
+
+```
+sudo cp /tmp/vprofile-v2.war /var/lib/tomcat10/webapps/ROOT.war
+```
+
+```
+sudo systemctl start tomcat10
+```
+
+![image](https://github.com/user-attachments/assets/98f68fbb-4140-4e2a-a76f-98a900a268dc)
+
+# Balanceador de Carga.
+Requisito:
+
+## Crear el Target Group.
+Estamos en EC2 y vamos a crear un "Target Group".
+
+![image](https://github.com/user-attachments/assets/4aa33d11-92b3-48f5-bad6-69fcb69e9a0e)
+
+Le ponemos un nombre, y cambiamos el puerto a 8080.
+
+![image](https://github.com/user-attachments/assets/41d150fa-e5bc-49a7-a66a-500023a88675)
+
+![image](https://github.com/user-attachments/assets/5d2a0144-45a1-4e21-82b5-00f16c65ff3b)
+
+Y creamos el grupo de destino o el Target Group.
+
+## Crear el Balanceador de Carga
+
+![image](https://github.com/user-attachments/assets/00204581-f1e1-4cbb-a6e2-bdd18ebbbb5f)
+
+![image](https://github.com/user-attachments/assets/5812cc5a-dfbb-4d37-9be5-1c9d9039d16e)
+![image](https://github.com/user-attachments/assets/57de5401-1d9a-448d-84bf-c87f6d10f7d4)
+
+![image](https://github.com/user-attachments/assets/fcf1644f-6f2d-4de9-8047-c5208e8a3a94)
+
+> [!WARNING]
+>
+>Debe escuchar en el puerto 80 y 443.
+> ![image](https://github.com/user-attachments/assets/615ff3aa-635c-4911-8872-eea163615e12)
+>
+>(Para que funcione el HTTPS)
+>![image](https://github.com/user-attachments/assets/720bbb15-5f39-4513-9ce5-46246c95c825)
+>
+> Esto obligado a poner el Certificado, si he puesto listener en el puerto 443, por lo tanto, voy a tener que quitarlo de momento, luego lo añadiré.
+> 
