@@ -381,4 +381,48 @@ Este es nuestro archivo /etc/hosts:
 >Cuando quieres que tu dominio sea accesible para cualquier persona en internet (porque no tienen tu archivo /etc/hosts/), los navegadores y sistemas operativos de los usuarios no van a consultar tu archivo /etc/hosts. **En su lugar, consultan servidores DNS distribuidos por todo el mundo**. Route 53 es un servicio de DNS que permite gestionar estos mapeos de forma centralizada y global, permitiendo que cualquier persona pueda acceder a tu dominio, no solo una máquina local.
 >
 
-# Route 53 (DNS Server)
+# Route 53 (DNS Server).
+
+Así que buscamos en la consola de AWS, el servicio Route 53:
+
+![image](https://github.com/user-attachments/assets/db0cf6e3-1750-410c-864b-f247e9fa31c7)
+
+Tenemos que crear una zona, y allí estará nuestro nombre de dominio. Y en ese dominio, tendremos diferentes Hosts. Y esos registros de Hosts, tendrán la IP o el CNAME.
+
+## Crear Zona.
+
+![image](https://github.com/user-attachments/assets/871e91e6-5f06-42c9-9bc2-c58b1609ff2f)
+
+Y vamos a ponerle nombre de dominio: `delta.es`
+
+NO VA A SER RESUELTO DESDE EL INTERNET, DESDE FUERA.
+
+![image](https://github.com/user-attachments/assets/4e5a95d6-624c-4c79-839f-2c17dd6ad2a7)
+
+VPC, es la Red, de esa región:
+
+![image](https://github.com/user-attachments/assets/117855f3-fe28-4a13-9ea0-a6ab74b5d3b5)
+
+Y ahora creamos un "record", un registro:
+
+![image](https://github.com/user-attachments/assets/059b9a75-25a6-4a98-a072-56ef2dfa9c9b)
+
+necesito saber la IP privada de mis instancias:
+![image](https://github.com/user-attachments/assets/0ee843bd-d6c1-4ccc-ac48-623c4d03ba1c)
+
+Y lo copio en el registro:
+![image](https://github.com/user-attachments/assets/b5aa5726-0bc9-43e7-b163-05da26eee62f)
+
+Y creamos el registro. Ahora hacemos lo mismo con el resto.
+
+> [!TIP]
+>
+> En mi caso, la interfaz me aparece así:
+>![image](https://github.com/user-attachments/assets/7b984d3b-f0b5-4241-a259-533d09f185c9)
+> Si cambiamos el asistente, se verá de esta forma más compleja:
+>
+> ![image](https://github.com/user-attachments/assets/bafd79c1-4d98-4fb9-874f-0eff7e82aeae)
+> 
+> ![image](https://github.com/user-attachments/assets/addd5d5d-2045-4960-a8ed-dbf3f6763fbe)
+> Y le damos a definir un registro simple.
+> ![image](https://github.com/user-attachments/assets/24743759-e067-4bb4-b9b8-bac0188377f7)
