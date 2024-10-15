@@ -391,6 +391,10 @@ Tenemos que crear una zona, y allí estará nuestro nombre de dominio. Y en ese 
 
 ## Crear Zona.
 
+> [!TIP]
+> Una zona DNS es una porción del espacio de nombres DNS que se administra de manera independiente. Puede contener uno o varios registros DNS y puede abarcar un dominio completo o una subparte de él.
+> 
+
 ![image](https://github.com/user-attachments/assets/871e91e6-5f06-42c9-9bc2-c58b1609ff2f)
 
 Y vamos a ponerle nombre de dominio: `delta.es`
@@ -453,3 +457,13 @@ Y seleccionamos GitBash.
 > [!WARNING]
 > GitBash ahora es el terminal por defecto.
 > 
+
+Como podemos ver, ahora, si intento abrir la terminal, pues me abre la de GitBash:
+
+![image](https://github.com/user-attachments/assets/aa70aad4-e842-44ba-8170-269085479495)
+
+tenemos que modificar esta parte:
+
+![image](https://github.com/user-attachments/assets/b8929f0c-d425-4d00-abeb-6d558af32276)
+
+y así pues añadir el registro DNS.
