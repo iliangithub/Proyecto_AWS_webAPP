@@ -234,14 +234,22 @@ Seleccionamos un grupo de seguridad existente: `proyecto-TomCat-APP-SG`
 sudo apt update
 sudo apt upgrade -y
 sudo apt install openjdk-11-jdk -y
-sudo apt install tomcat9 tomcat9-admin tomcat9-docs tomcat9-common git -y
+#sudo apt install tomcat9 tomcat9-admin tomcat9-docs tomcat9-common git -y
+# no funciona Package tomcat9 is not available, but is referred to by another package.
+#This may mean that the package is missing, has been obsoleted, or
+#is only available from another source
+
+#este si:
+sudo apt install tomcat10 tomcat10-admin tomcat10-docs tomcat10-common git -y
+
+sudo systemctl start tomcat10
 ```
 # Comprobaciones (podría fallar o haber errores)
 ## Máquina MySQL.
 ```
 sudo systemctl status mariadb
 ```
-
+Evidentemente, tiene que mostrar que está running.
 ```
 mysql -u admin -padmin123 accounts
 ```
@@ -273,6 +281,43 @@ Debería devolver esto:
 | user |
 | user_role |
 
+Para salir del MariaDB:
+
 ```
 quit
 ```
+A por la siguiente máquina.
+## Máquina MemCache.
+
+```
+[ec2-user@ip-172-31-xx-xx ~]$ ss -tunlp | grep 11211
+tcp   LISTEN 0      1024                           0.0.0.0:11211      0.0.0.0:*
+tcp   LISTEN 0      1024                             [::1]:11211         [::]:*
+```
+
+
+## Máquina RabbitMQ-server
+
+```
+[ec2-user@ip-172-31-38-8 ~]$ systemctl status rabbitmq-server
+● rabbitmq-server.service - RabbitMQ broker
+     Loaded: loaded (/usr/lib/systemd/system/rabbitmq-server.service; enabled; >
+     Active: active (running) since Tue 2024-10-15 09:19:03 UTC; 37min ago
+   Main PID: 26089 (beam.smp)
+      Tasks: 26 (limit: 1112)
+     Memory: 68.1M
+        CPU: 5.748s
+     CGroup: /system.slice/rabbitmq-server.service
+             ├─26089 /usr/lib64/erlang/erts-14.2.5.4/bin/beam.smp -W w -MBas ag>
+             ├─26102 erl_child_setup 32768
+             ├─26117 sh -s disksup
+             ├─26119 /usr/lib64/erlang/lib/os_mon-2.9.1/priv/bin/memsup
+             ├─26120 /usr/lib64/erlang/lib/os_mon-2.9.1/priv/bin/cpu_sup
+             ├─26121 /usr/lib64/erlang/erts-14.2.5.4/bin/inet_gethost 4
+             ├─26122 /usr/lib64/erlang/erts-14.2.5.4/bin/inet_gethost 4
+             ├─26133 /usr/lib64/erlang/erts-14.2.5.4/bin/epmd -daemon
+             └─26152 /bin/sh -s rabbit_disk_monitor
+```
+
+## Máquina TomCat-app01
+
