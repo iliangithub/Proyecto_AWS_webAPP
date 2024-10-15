@@ -747,3 +747,5 @@ Este es el resultado.
 >Oct 15 19:34:01 ip-172-31-40-172 tomcat10[12018]: Starting ProtocolHandler ["http-nio-8080"]
 >Oct 15 19:34:01 ip-172-31-40-172 tomcat10[12018]: Server startup in [1871] milliseconds
 > ```
+>
+> Y simplemente, tenemos que meter de nuevo allí el artefacto.
