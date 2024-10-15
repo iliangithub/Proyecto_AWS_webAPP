@@ -123,7 +123,7 @@ sudo mysql -u root -p"$DATABASE_PASS" -e "FLUSH PRIVILEGES"
 sudo systemctl restart mariadb
 ```
 
-## Para el memcache:
+## Para el memcached:
 
 **Nombre y etiquetas:**
 
@@ -244,7 +244,7 @@ sudo apt install tomcat10 tomcat10-admin tomcat10-docs tomcat10-common git -y
 
 sudo systemctl start tomcat10
 ```
-# Comprobaciones (podría fallar o haber errores)
+# Comprobaciones (podría fallar o haber errores).
 ## Máquina MySQL.
 ```
 sudo systemctl status mariadb
@@ -296,7 +296,7 @@ tcp   LISTEN 0      1024                             [::1]:11211         [::]:*
 ```
 
 
-## Máquina RabbitMQ-server
+## Máquina RabbitMQ-server.
 
 ```
 [ec2-user@ip-172-31-38-8 ~]$ systemctl status rabbitmq-server
@@ -319,7 +319,7 @@ tcp   LISTEN 0      1024                             [::1]:11211         [::]:*
              └─26152 /bin/sh -s rabbit_disk_monitor
 ```
 
-## Máquina TomCat-app01
+## Máquina TomCat-app01.
 
 ```
 systemctl status tomcat10
