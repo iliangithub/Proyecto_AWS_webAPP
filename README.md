@@ -531,3 +531,16 @@ mvn install
 
 ![image](https://github.com/user-attachments/assets/88c678ab-ec5e-42bd-9242-9ee849783a5a)
 
+Ahora, voy a subir todo a S3 bucket, y no es posible sin la autenticación.
+
+## Crear un usuario IAM y S3 bucket.
+
+![image](https://github.com/user-attachments/assets/96038202-4470-4f40-921c-4fd3244fe0ef)
+
+Este va a ser el nombre:
+![image](https://github.com/user-attachments/assets/aaa75c60-f920-409d-90aa-28d81503a534)
+
+No necesitamos, ningun acceso a la consola, solo necesitamos la clave de acceso y la clave privada.
+
+![image](https://github.com/user-attachments/assets/db70ef15-b854-4d57-b4c7-08544b1b9bd6)
+
