@@ -75,12 +75,25 @@ Con el backend, exatamente igual:
 Vamos a clonar el source code
 
 Para la base de datos:
-Nombre y etiquetas:
+**Nombre y etiquetas:**
 | Clave    | Valor |
 | -------- | ------- |
 | Name  | proyecto-db01 |
 | Project | db01     |
-Y utilizaremos:
+
+**Imagenes de Aplicaciones y Sistemas Operativos (AMI)**
+Amazon Linux, 2023, 64 bits (x86)
+
+**Tipo de instancia**
+t2.micro
+
+**Pares clave**
+Las que creamos `proyecto-produccion-pares-clave`
+
+**Configuraciones de red**
+Seleccionamos un grupo de seguridad existente: `proyecto-backend-SG`
+
+**Detalles Avanzados > Datos de usuario**
 ```
 #!/bin/bash
 DATABASE_PASS='admin123'
