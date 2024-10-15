@@ -564,6 +564,12 @@ y ahora en el CLI del Visual Studio:
 aws configure
 ```
 
-![image](https://github.com/user-attachments/assets/35ba71e6-c24a-4291-ad8e-7bf50885f8cf)
-
 ![image](https://github.com/user-attachments/assets/d4f985fb-8a7d-46fb-ab8a-f8271230d42f)
+
+El S3 bucket, el nombre tiene que ser 100% único, no como el mio, si no, como el de ningún otro:
+
+![image](https://github.com/user-attachments/assets/7bd06f01-e856-4e8c-bfdc-45353b125c70)
+
+Y en teoría, con este comando, ya debería de estar:
+
+![image](https://github.com/user-attachments/assets/da4610ca-1087-4c88-bcbf-2d8899fd901e)
