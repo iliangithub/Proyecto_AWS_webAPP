@@ -431,3 +431,13 @@ Y creamos el registro. Ahora hacemos lo mismo con el resto.
 > Y le damos a definir un registro simple.
 > 
 > ![image](https://github.com/user-attachments/assets/24743759-e067-4bb4-b9b8-bac0188377f7)
+
+Realmente, solamente necesitamos estos 3 registros, no más. Porque la aplicacción se va a conectar a estos servicios backend.
+
+![image](https://github.com/user-attachments/assets/6e3ee6b0-3c3b-4b91-af6e-cf79decf06ec)
+
+# Construir y Desplegar el artefacto.
+
+> [!TIP]
+> En DevOps, un artefacto se refiere a cualquier archivo generado durante el proceso de desarrollo de software que puede ser usado en las siguientes fases del ciclo de vida del software. Los artefactos son los resultados tangibles del proceso de construcción y despliegue de una aplicación.
+> 
