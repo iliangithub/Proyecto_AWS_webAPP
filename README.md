@@ -441,3 +441,6 @@ Realmente, solamente necesitamos estos 3 registros, no más. Porque la aplicacci
 > [!TIP]
 > En DevOps, un artefacto se refiere a cualquier archivo generado durante el proceso de desarrollo de software que puede ser usado en las siguientes fases del ciclo de vida del software. Los artefactos son los resultados tangibles del proceso de construcción y despliegue de una aplicación.
 > 
+
+![image](https://github.com/user-attachments/assets/f65130c4-24e0-4774-8b0a-8d801523117a)
+
