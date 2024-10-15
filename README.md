@@ -74,12 +74,13 @@ Con el backend, exatamente igual:
 # Crear las instancias.
 Vamos a clonar el source code
 
-Para la base de datos:
+## Para la base de datos:
+
 **Nombre y etiquetas:**
 | Clave    | Valor |
 | -------- | ------- |
 | Name  | proyecto-db01 |
-| Project | db01     |
+| Project | delta |
 
 **Imagenes de Aplicaciones y Sistemas Operativos (AMI)**
 Amazon Linux, 2023, 64 bits (x86)
@@ -120,4 +121,118 @@ sudo mysql -u root -p"$DATABASE_PASS" accounts < /tmp/vprofile-project/src/main/
 sudo mysql -u root -p"$DATABASE_PASS" -e "FLUSH PRIVILEGES"
 
 sudo systemctl restart mariadb
+```
+
+## Para el memcache:
+
+**Nombre y etiquetas:**
+
+| Clave    | Valor |
+| -------- | ------- |
+| Name  | proyecto-mc01 |
+| Project | delta |
+
+**Imagenes de Aplicaciones y Sistemas Operativos (AMI)**
+Amazon Linux, 2023, 64 bits (x86)
+
+**Tipo de instancia**
+t2.micro
+
+**Pares clave**
+Las que creamos `proyecto-produccion-pares-clave`
+
+**Configuraciones de red**
+Seleccionamos un grupo de seguridad existente: `proyecto-backend-SG`
+
+**Detalles Avanzados > Datos de usuario**
+```
+#!/bin/bash
+sudo dnf install memcached -y
+sudo systemctl start memcached
+sudo systemctl enable memcached
+sudo systemctl status memcached
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/sysconfig/memcached
+sudo systemctl restart memcached
+sudo yum install firewalld -y
+sudo systemctl start firewalld
+sudo systemctl enable firewalld
+firewall-cmd --add-port=11211/tcp
+firewall-cmd --runtime-to-permanent
+firewall-cmd --add-port=11111/udp
+firewall-cmd --runtime-to-permanent
+sudo memcached -p 11211 -U 11111 -u memcached -d
+```
+
+## Para el RabbitMQ:
+
+**Nombre y etiquetas:**
+
+| Clave    | Valor |
+| -------- | ------- |
+| Name  | proyecto-rmq01 |
+| Project | delta |
+
+**Imagenes de Aplicaciones y Sistemas Operativos (AMI)**
+Amazon Linux, 2023, 64 bits (x86)
+
+**Tipo de instancia**
+t2.micro
+
+**Pares clave**
+Las que creamos `proyecto-produccion-pares-clave`
+
+**Configuraciones de red**
+Seleccionamos un grupo de seguridad existente: `proyecto-backend-SG`
+
+**Detalles Avanzados > Datos de usuario**
+```
+#!/bin/bash
+## primary RabbitMQ signing key
+rpm --import 'https://github.com/rabbitmq/signing-keys/releases/download/3.0/rabbitmq-release-signing-key.asc'
+## modern Erlang repository
+rpm --import 'https://github.com/rabbitmq/signing-keys/releases/download/3.0/cloudsmith.rabbitmq-erlang.E495BB49CC4BBE5B.key'
+## RabbitMQ server repository
+rpm --import 'https://github.com/rabbitmq/signing-keys/releases/download/3.0/cloudsmith.rabbitmq-server.9F4587F226208342.key'
+curl -o /etc/yum.repos.d/rabbitmq.repo https://raw.githubusercontent.com/hkhcoder/vprofile-project/aws-LiftAndShift/al2023rmq.repo
+dnf update -y
+## install these dependencies from standard OS repositories
+dnf install socat logrotate -y
+## install RabbitMQ and zero dependency Erlang
+dnf install -y erlang rabbitmq-server
+systemctl enable rabbitmq-server
+systemctl start rabbitmq-server
+sudo sh -c 'echo "[{rabbit, [{loopback_users, []}]}]." > /etc/rabbitmq/rabbitmq.config'
+sudo rabbitmqctl add_user test test
+sudo rabbitmqctl set_user_tags test administrator
+sudo systemctl restart rabbitmq-server
+```
+
+## Para la app01:
+
+**Nombre y etiquetas:**
+
+| Clave    | Valor |
+| -------- | ------- |
+| Name  | proyecto-app01 |
+| Project | delta |
+
+**Imagenes de Aplicaciones y Sistemas Operativos (AMI)**
+Ubuntu Server 24.04 LTS, 64 bits (x86)
+
+**Tipo de instancia**
+t2.micro
+
+**Pares clave**
+Las que creamos `proyecto-produccion-pares-clave`
+
+**Configuraciones de red**
+Seleccionamos un grupo de seguridad existente: `proyecto-TomCat-APP-SG`
+
+**Detalles Avanzados > Datos de usuario**
+```
+#!/bin/bash
+sudo apt update
+sudo apt upgrade -y
+sudo apt install openjdk-11-jdk -y
+sudo apt install tomcat9 tomcat9-admin tomcat9-docs tomcat9-common git -y
 ```
