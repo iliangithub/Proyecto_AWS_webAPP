@@ -403,6 +403,7 @@ VPC, es la Red, de esa región:
 
 ![image](https://github.com/user-attachments/assets/117855f3-fe28-4a13-9ea0-a6ab74b5d3b5)
 
+## Crear Registros.
 Y ahora creamos un "record", un registro:
 
 ![image](https://github.com/user-attachments/assets/059b9a75-25a6-4a98-a072-56ef2dfa9c9b)
