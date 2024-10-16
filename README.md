@@ -759,3 +759,11 @@ Este es el resultado.
 >
 >![image](https://github.com/user-attachments/assets/4de98174-a608-49b2-91de-7b25f6429157)
 >
+
+
+> [!WARNING]
+> ### Error 2, no puedo acceder desde el navegador.
+>
+> Entonces, contexto, he apagado las máquinas, dia nuevo, enciendo las máquinas, copio el enlace, ya no puedo acceder. ¿Por qué?
+> 
+> ![image](https://github.com/user-attachments/assets/b6794c4b-8322-4efe-9872-8c654ab74582)
