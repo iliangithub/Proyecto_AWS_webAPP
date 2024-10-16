@@ -769,7 +769,9 @@ Este es el resultado.
 > ![image](https://github.com/user-attachments/assets/b6794c4b-8322-4efe-9872-8c654ab74582)
 >
 > Sé que las IP's privadas de mis instancias, no han cambiado, por lo tanto, no hay conflicto con LOS REGISTROS DE LA ZONA DNS:
+> 
 > ![image](https://github.com/user-attachments/assets/d9b80cea-f9ec-46af-9b20-5037c61e0c0a)
+> 
 > - db01:
 >
 >   ![image](https://github.com/user-attachments/assets/908054b5-39a1-4c47-b0e5-3d1a7af06d58)
