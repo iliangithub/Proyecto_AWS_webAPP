@@ -768,6 +768,7 @@ Este es el resultado.
 > 
 > ![image](https://github.com/user-attachments/assets/b6794c4b-8322-4efe-9872-8c654ab74582)
 >
+> #### OPCIÓN DESCARTADA 1
 > Sé que las IP's privadas de mis instancias, no han cambiado, por lo tanto, no hay conflicto con LOS REGISTROS DE LA ZONA DNS:
 > 
 > ![image](https://github.com/user-attachments/assets/d9b80cea-f9ec-46af-9b20-5037c61e0c0a)
@@ -784,4 +785,12 @@ Este es el resultado.
 >
 >   ![image](https://github.com/user-attachments/assets/3fc09eec-7d67-4cbf-b28f-498934f070dd)
 >
-> 
+> #### OPCIÓN DESCARTADA 2
+>
+> Hay una regla de seguridad, TomCat-APP-SG
+>
+>![image](https://github.com/user-attachments/assets/dfa45951-9b8e-4afa-8603-2e91236e739b)
+>
+> En la que selecciono "My IP", se coloca la IP pública
+>
+> ¿Pero no era de hecho la IP pública la que variaba CUANDO APAGO LA MÁQUINA? ¿Se modifica también automáticamente del Security Group? ¿O solo se modifica de la instancia?
