@@ -801,4 +801,5 @@ Este es el resultado.
 >
 > Entonces, **EFECTIVAMENTE NO COINCIDEN Y HAY QUE REFRESCARLAS MANUALMENTE:**
 >
-> 
+> ![image](https://github.com/user-attachments/assets/fe9ebb5b-5823-4a7e-aa06-4949c9c57ab9)
+
