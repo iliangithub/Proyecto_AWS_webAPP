@@ -799,3 +799,6 @@ Este es el resultado.
 >
 > Como podemos ver, la IP pública es la `54.205.223.115`
 >
+> Entonces, **EFECTIVAMENTE NO COINCIDEN Y HAY QUE REFRESCARLAS MANUALMENTE:**
+>
+> 
