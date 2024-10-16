@@ -20,7 +20,7 @@ entonces, queremos que sea flexible, escalable, e ir pagando de poco a poco por 
 
 https://www.udemy.com/course/decodingdevops/learn/lecture/26464654#overview
 en este explican los puertos y tal...
-# El diseño arquitectura:
+## 0.1 El diseño arquitectura:
 EC2 instances
 Elb
 Auto scaling
@@ -40,8 +40,8 @@ Vamos a actualizar la IP al name mapping en Route 53.Y finalmente, vamos a crear
 Y finalmente vamos a subir neustro artefacto a S3 bucket. Desde S3, vamos a descargarlo a la instancia EC2.
 Luego, el ELB con HTTPS el certificado. EL balanceador de carga, irá pues a la página.
 
-# Grupos de Seguridad y Pares-Clave.
-## Grupos de Seguridad (Creación).
+# 1.0 Grupos de Seguridad y Pares-Clave.
+## 1.1 Grupos de Seguridad (Creación).
 ![image](https://github.com/user-attachments/assets/9e1fb253-1f6d-4a87-8c02-25030b642cff)
 ![image](https://github.com/user-attachments/assets/9a77f185-f499-4dfa-b4c4-a420e66af7f2)
 
@@ -66,12 +66,12 @@ Y también tendríamos que haber añadido el puerto 22 SSH, en el TomCat app:
 Con el backend, exatamente igual:
 ![image](https://github.com/user-attachments/assets/378cfaee-e630-4e79-96e1-9691889dc147)
 
-## Pares-Claves (Creación).
+## 1.1 Pares-Claves (Creación).
 ![image](https://github.com/user-attachments/assets/3c7ea6d4-b3e4-492b-ade8-9d3cc359d0c3)
 
 ![image](https://github.com/user-attachments/assets/fbe23bdb-11c3-4317-b52a-d6b26d6b41ab)
 
-# Crear las instancias.
+# 2.0 Crear las instancias.
 Vamos a clonar el source code
 
 ## Para la base de datos:
