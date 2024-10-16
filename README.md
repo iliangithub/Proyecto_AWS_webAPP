@@ -569,6 +569,10 @@ descargo el .csv.
 
 ![image](https://github.com/user-attachments/assets/d08e9eb6-2f81-48cd-9e9f-99c2f2570f13)
 
+Ya tenemos las claves.
+
+## Descargar el artefacto. PT2.
+
 y ahora en el CLI del Visual Studio:
 
 ```
