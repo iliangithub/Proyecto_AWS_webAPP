@@ -606,9 +606,9 @@ dentro, está el artefacto:
 
 ![image](https://github.com/user-attachments/assets/8002a733-7836-4ed2-80be-466641007579)
 
-### Descargar y Desplegar el artefacto (En la instancia TomCat)
+### Descargar y Desplegar el artefacto (En la instancia TomCat).
 Prerequisitos:
-- El AWS CLI instalado en el TomCat.
+- El AWS CLI instalado **DENTRO DEL TomCat.**
 - Descargarlo y desplegarlo.
 
 > [!WARNING]
