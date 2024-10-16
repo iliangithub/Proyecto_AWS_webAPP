@@ -754,4 +754,8 @@ Este es el resultado.
 > ![image](https://github.com/user-attachments/assets/c467c82b-845c-4a3e-975f-f7195b396ad9)
 >
 > Anteriormente, ejecuté al TomCat, sin nada, y funciona, ahora este es el resultado cuando pongo MI página.
-> 
+>
+> En TomCat, me aparece este error al ejecutar `systemctl status tomcat10`
+>
+>![image](https://github.com/user-attachments/assets/4de98174-a608-49b2-91de-7b25f6429157)
+>
