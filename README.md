@@ -795,4 +795,7 @@ Este es el resultado.
 >
 > **¿Pero no era de hecho la IP pública la que variaba CUANDO APAGO LA MÁQUINA? ¿Se modifica también automáticamente del Security Group? ¿O solo se modifica de la instancia?**
 >
-> 
+> ![image](https://github.com/user-attachments/assets/567a5572-e8f5-4bb3-8de1-1b928c4d82f7)
+>
+> Como podemos ver, la IP pública es la `54.205.223.115`
+>
