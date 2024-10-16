@@ -28,6 +28,8 @@ efs s3 para el almacenamiento
 amazon certificate mana
 route 53
 
+![Proyecto “delta”](https://github.com/user-attachments/assets/6b1bc344-ca17-44de-b937-97203a8cda37)
+
 el diseño es ahora:
 Nuestros usuarios, van a acceder al sitio web, utilizando una URL y esa URL, va a apuntar al balanceador de carga, utilizaremos, https, y habrá un certificado que será respaldado por el ACM de amazon (Amazon Certificate Manager).
 El balanceador de carga, va a estar en un Grupo de Seguridad (Firewall) y solo aceptará peticiones https, solo tráfico https.
