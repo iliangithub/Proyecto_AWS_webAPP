@@ -793,4 +793,6 @@ Este es el resultado.
 >
 > En la que selecciono "My IP", se coloca la IP pública
 >
-> ¿Pero no era de hecho la IP pública la que variaba CUANDO APAGO LA MÁQUINA? ¿Se modifica también automáticamente del Security Group? ¿O solo se modifica de la instancia?
+> **¿Pero no era de hecho la IP pública la que variaba CUANDO APAGO LA MÁQUINA? ¿Se modifica también automáticamente del Security Group? ¿O solo se modifica de la instancia?**
+>
+> 
