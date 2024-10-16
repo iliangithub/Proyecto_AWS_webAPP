@@ -571,7 +571,7 @@ descargo el .csv.
 
 Ya tenemos las claves.
 
-## Descargar el artefacto. PT2.
+## Subir el artefacto a S3 (Necesito las claves, anteriores).
 
 y ahora en el CLI del Visual Studio:
 
