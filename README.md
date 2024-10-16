@@ -718,11 +718,12 @@ Y este enlace, tenemos que pegarlo en el navegador.
 Este es el resultado.
 
 > [!WARNING]
+> ### Error, TomCat.
 > Si nos sale algún tipo de error, es muy probable que sea por algo relacionado con el TomCat, hasta el momento, si se ha seguido todo al pié de la letra, es muy sencillo y automático, las máquinas están >provisionadas, y no debería de haber problema en ese sentido.
 >
+> **NOS APARECERÁ ESTO, EN CASO DE QUE NO HAYAMOS PUESTO LA PÁGINA:**
 > ![image](https://github.com/user-attachments/assets/01fe5cbe-e39d-4cf6-8745-fb0558235df9)
 >
-> Si nos sale esto, es 100% problema del TomCat.
 > ```
 > ● tomcat10.service - Apache Tomcat 10 Web Application Server
 >     Loaded: loaded (/usr/lib/systemd/system/tomcat10.service; enabled; preset: enabled)
@@ -747,10 +748,10 @@ Este es el resultado.
 >Oct 15 19:34:01 ip-172-31-40-172 tomcat10[12018]: Starting ProtocolHandler ["http-nio-8080"]
 >Oct 15 19:34:01 ip-172-31-40-172 tomcat10[12018]: Server startup in [1871] milliseconds
 > ```
->
+> **SIN EMBARGO, AL METER LA PÁGINA NOS APARECE ESTE ERROR:**
 > Y simplemente, tenemos que meter de nuevo allí el artefacto. En la carpeta de TomCat, "webapps"
 >
 > ![image](https://github.com/user-attachments/assets/c467c82b-845c-4a3e-975f-f7195b396ad9)
 >
-> En mi caso, para comprobar una cosa, he borrado la carpeta ROOT, que había dentro, y evidentemente, ya no tiene anda que mostrarme, pues eso, entonces el problema está en el artefacto.
+> Anteriormente, ejecuté al TomCat, sin nada, y funciona, ahora este es el resultado cuando pongo MI página.
 > 
