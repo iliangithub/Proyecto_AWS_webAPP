@@ -721,7 +721,7 @@ Copiamos el enlace:
 ![image](https://github.com/user-attachments/assets/053cdda8-ef7a-4d09-b1b0-03864ba3de73)
 
 Y este enlace, tenemos que pegarlo en el navegador.
-Este es el resultado.
+**Este es el resultado:**
 
 > [!WARNING]
 > ### Error, TomCat.
@@ -816,3 +816,80 @@ Este es el resultado.
 > ![image](https://github.com/user-attachments/assets/0cda6683-b3d7-4bf9-a5b9-f69b9d43e46b)
 >
 > 
+
+# Grupoo de Autoescalado (Autoscaling Group).
+
+Entonces, lo que queremos es básicamente escalar o reducir, dependiendo de la carga.
+Requisitos:
+- AMI de la instancia.
+- La plantilla de lanzamiento de la instancia.
+- El grupo de autoescalado.
+
+## Crear la AMI:
+
+Desde el EC2, buscamos la instancia y le damos a crear imagen:
+
+![image](https://github.com/user-attachments/assets/c93d4d7e-52ca-492b-aaf8-016698797823)
+
+La llamaré `delta-app01-tomcat-image`.
+El resto de cosas, no hay que tocarlas.
+
+![image](https://github.com/user-attachments/assets/75a24bfe-90c0-4f29-a280-d9b1546b70ed)
+
+Debemos esperar a que ponga "Disponible".
+
+## Crear la plantilla:
+Ahora, nos vamos a Launch Templates y la creamos:
+
+![image](https://github.com/user-attachments/assets/0a8cf8d6-5223-4f14-9443-40555f642d0c)
+
+Selecciono la AMI:
+
+![image](https://github.com/user-attachments/assets/cc5c2de2-c52a-4d32-ad58-15c28c245142)
+
+![image](https://github.com/user-attachments/assets/36e9530a-0056-45a8-85f8-3d231c32e7c4)
+
+
+![image](https://github.com/user-attachments/assets/108aad8e-c177-4e2a-aa98-a45664e5e39f)
+
+
+![image](https://github.com/user-attachments/assets/d2cb9139-08f1-435d-8a99-8776377ca5a9)
+
+![image](https://github.com/user-attachments/assets/4cc2e898-b357-49a5-b9c8-85412a4fa72b)
+
+![image](https://github.com/user-attachments/assets/dc4d81bd-c2e0-43b5-8d4d-849f868edde5)
+
+## Crear Grupo de Autoescalado:
+
+![image](https://github.com/user-attachments/assets/7b1f48e3-1bd8-46a2-8618-472f752cc0c4)
+
+![image](https://github.com/user-attachments/assets/c17854c0-80fe-46ff-ae85-692d407a8d8a)
+
+![image](https://github.com/user-attachments/assets/d902b724-1920-44ec-bd93-7a32687c89d8)
+
+![image](https://github.com/user-attachments/assets/8c037c3a-ef7c-40fa-8972-189bb1a3a6a2)
+
+![image](https://github.com/user-attachments/assets/257bd3df-748d-4937-a2bb-11d08867e8be)
+
+![image](https://github.com/user-attachments/assets/ff1de8b8-4e7e-4a87-9011-d56a30ccc7c7)
+
+![image](https://github.com/user-attachments/assets/cc044244-1718-4c1c-8391-e0bdda4f3702)
+
+![image](https://github.com/user-attachments/assets/84145a5c-824f-4581-9499-76e9c91b3f71)
+
+### Comprobación:
+
+Como podemos comprobar funciona:
+![image](https://github.com/user-attachments/assets/0f2823e5-59f4-4e9d-8eb3-019bb6d4a5e2)
+
+(OPCIONAL)
+![image](https://github.com/user-attachments/assets/637dcfa6-3d90-405d-88dc-80a2a46c29a8)
+
+![image](https://github.com/user-attachments/assets/039e4560-435a-46a2-96cd-1b1419e73126)
+
+![image](https://github.com/user-attachments/assets/11e772e0-108b-4163-b067-4bc50d90eeec)
+
+# Final, formas alternativas de hacerlo (PaaS y SaaS):
+
+
+
