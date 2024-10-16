@@ -802,4 +802,11 @@ Este es el resultado.
 > Entonces, **EFECTIVAMENTE NO COINCIDEN Y HAY QUE REFRESCARLAS MANUALMENTE:**
 >
 > ![image](https://github.com/user-attachments/assets/fe9ebb5b-5823-4a7e-aa06-4949c9c57ab9)
-
+>
+> #### OPCIÓN DESCARTADA 3
+>
+> TENGO QUE ACCEDER DESDE EL BALANCEADOR DE CARGA, Y NO DIRECTAMENTE DESDE EL NOMBRE DE DOMINIO DEL TOMCAT-APP01
+>
+> ![image](https://github.com/user-attachments/assets/0cda6683-b3d7-4bf9-a5b9-f69b9d43e46b)
+>
+> 
