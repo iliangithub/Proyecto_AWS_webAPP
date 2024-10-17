@@ -109,6 +109,9 @@ Y finalmente vamos a subir neustro artefacto a S3 bucket. Desde S3, vamos a desc
 Luego, el ELB con HTTPS el certificado. EL balanceador de carga, irá pues a la página.
 
 # 1.0 Grupos de Seguridad y Pares-Clave.
+
+Sabiendo ya como va a ser el proyecto, pues empezamos primero por esto, empezamos por los Grupos y Claves, porque es una buena práctica.
+
 ## 1.1 Grupos de Seguridad (Creación).
 ![image](https://github.com/user-attachments/assets/9e1fb253-1f6d-4a87-8c02-25030b642cff)
 ![image](https://github.com/user-attachments/assets/9a77f185-f499-4dfa-b4c4-a420e66af7f2)
