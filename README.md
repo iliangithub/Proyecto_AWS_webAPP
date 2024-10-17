@@ -35,12 +35,12 @@ en este explican los puertos y tal...
 
 ### EC2 Instances:
 
-| NAME: | SECURITY GROUP: | KEY-PAIR |   |   |
+| NAME: | SECURITY GROUP: | KEY-PAIR: | AMI: | TYPE: |
 |---|---|---|---|---|
-| delta-TomCat-app01 | delta-TomCat-APP-SG |   |   |   |
-| delta-rmq01 | delta-Backend-SG |   |   |   |
-| delta-mc01 | delta-Backend-SG |   |   |   |
-| delta-db01 | delta-Backend-SG |   |   |   |
+| delta-TomCat-app01 | delta-TomCat-APP-SG |   | Ubuntu 24.04 | t2.micro |
+| delta-rmq01 | delta-Backend-SG |   | Amazon | t2.micro |
+| delta-mc01 | delta-Backend-SG |   | Amazon  | t2.micro |
+| delta-db01 | delta-Backend-SG |   | Amazon | t2.micro |
 
 ### ELB:
 
