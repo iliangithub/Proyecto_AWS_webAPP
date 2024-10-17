@@ -4,11 +4,12 @@ multi tier web application stack [vprofile]
 host and run for production
 lift and shift strategy.
 
+> [!TIP]
 > #### ¿Qué es Lift and Shift?
 > La **estrategia de "Lift and Shift"** es un enfoque común en la migración a la nube, donde las aplicaciones y servicios se trasladan desde un entorno local (on-premises) o de un proveedor de nube a otro sin realizar cambios significativos en su arquitectura o código.
 >
 >**Características principales:**
-- **Sin modificación del código**: En lugar de rediseñar o refactorizar la aplicación para aprovechar las capacidades específicas de la nube, simplemente se mueve tal como está.
+>- **Sin modificación del código**: En lugar de rediseñar o refactorizar la aplicación para aprovechar las capacidades específicas de la nube, simplemente se mueve tal como está.
 - **Migración rápida**: Esta estrategia es más rápida que otras porque no implica una reescritura importante de la aplicación.
 - **Reducción de costos iniciales**: Puede ser menos costoso al inicio, ya que no requiere una inversión significativa en desarrollo o reingeniería de la aplicación.
 - **Uso de infraestructura como servicio (IaaS)**: Normalmente, en lugar de utilizar servicios nativos de la nube (como PaaS o SaaS), las instancias o máquinas virtuales de la aplicación se migran a una infraestructura virtualizada similar (como EC2 en AWS).
