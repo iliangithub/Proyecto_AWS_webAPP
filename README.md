@@ -54,6 +54,7 @@ en este explican los puertos y tal...
 Auto Scaling Group:
 
 efs s3
+EBS, para almacenar las instancias.
 
 S3, para almacenar el artefacto, construido por Maven.
 
