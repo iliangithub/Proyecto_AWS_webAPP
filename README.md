@@ -923,6 +923,17 @@ Y este enlace, tenemos que pegarlo en el navegador.
 >
 >![image](https://github.com/user-attachments/assets/4de98174-a608-49b2-91de-7b25f6429157)
 >
+> Este problema, puede estar relacionado con que la aplicacion / artefacto, fue hecho en TomCat9, y yo estoy utilizando el TomCat10.
+> Entonces, de alguna forma, tengo que instalar el TomCat9, concretamente el 9.
+>
+> ![image](https://github.com/user-attachments/assets/4ff8c469-409a-444f-8527-cfc06139e3d3)
+>
+> Para colmo, no puedo conectarme por SSH, porque el grupo de seguridad de la instancia del TomCat, tenemos una regla de entrada, en la que SSH desde una IP, diferente a la de la instancia (ya que hemos reiniciado la instancia).
+>
+> ![image](https://github.com/user-attachments/assets/5b159821-aba8-45d0-a6a5-8a16e6c33a77)
+> 
+
+
 
 
 > [!WARNING]
