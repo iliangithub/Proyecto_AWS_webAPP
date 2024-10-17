@@ -1,11 +1,12 @@
 # 0.0 Proyecto Multi-Tier web APP ("delta")(IaaS).
+El proyecto, se llama "delta", utiliza una estrategia para migrar los datos a la nube **lift&shift**, el "workload" o la carga de trabajo o conjunto de aplicaciones, procesos; es decir, el conjunto de recursos o sistemas que son trasladados a la nube sin modificar su arquitectura o funcionamiento. 
 
-multi tier web application stack [vprofile]
-host and run for production
-lift and shift strategy.
+Y transladado en AWS Cloud.
 
 > [!TIP]
 > #### ¿Qué es Lift and Shift?
+> https://cloud.google.com/learn/cloud-migration?hl=es
+> 
 > La **estrategia de "Lift and Shift"** es un enfoque común en la migración a la nube, donde las aplicaciones y servicios se trasladan desde un entorno local (on-premises) o de un proveedor de nube a otro sin realizar cambios significativos en su arquitectura o código.
 >
 >**Características principales:**
@@ -28,9 +29,17 @@ lift and shift strategy.
 Es una buena opción si quieres migrar rápidamente sin modificar tus aplicaciones o si el tiempo y el presupuesto son limitados. También se utiliza cuando una organización quiere hacer la transición a la nube de forma progresiva, con la idea de optimizar las aplicaciones después.
 >
 
-tenemos servicios de app que está corriendo o son ejecutados en maquinas virtuales o físicas, servicios de base de datos; Postgre, Oracle, aplicaciones como; TomCat, LAMP stack y servicios DNS.
+Estamos hablando de un proyecto "delta", que va a ser un multitier web application stack o también **pila de aplicación web de múltiples capas**
 
-Tenemos este Workload, todos eçtodos estos servidores corriendo de forma local, almacenar todo de forma local pues supone costes y no está automatizado, perdemos tiempo. Es decir, pagamos por la infraestructura como servicio, realmente pagamos del AWS pues la infraestructura, los procesadores, la RAM. IaaS. Es escalable, reducir o aumentar para reducir costes y rendimiento o aumentar el rendimiento pero también aumentar los costes y también podemos autimatizar.
+Es un diseño arquitectónico que organiza una aplicación en varias capas o niveles, donde cada capa cumple una función específica. Este modelo ayuda a separar las responsabilidades dentro de la aplicación, facilitando la escalabilidad, el mantenimiento y la flexibilidad.
+
+Hosteamos y lo ejecutaremos en AWS, **para producción.**
+
+#### El escenario:
+
+Tenemos servicios de app que está corriendo o son ejecutados en maquinas virtuales o físicas, servicios de base de datos; Postgre, Oracle, aplicaciones como; TomCat, LAMP stack y servicios DNS.
+
+Tenemos este Workload, todos estos servidores corriendo de forma local, almacenar todo de forma local pues supone costes y no está automatizado, perdemos tiempo. Es decir, pagamos por la infraestructura como servicio, realmente pagamos del AWS pues la infraestructura, los procesadores, la RAM. IaaS. Es escalable, reducir o aumentar para reducir costes y rendimiento o aumentar el rendimiento pero también aumentar los costes y también podemos autimatizar.
 
 Utilizamos evidengemente AWS Cloud Computing.
 - Utilizaremos las instancias EC2, que serán nuestras máquinas virtuales, para nuestro TomCat, RabbitMQ, MemCache y MySQL.
@@ -42,8 +51,6 @@ Utilizamos evidengemente AWS Cloud Computing.
 
 entonces, queremos que sea flexible, escalable, e ir pagando de poco a poco por lo que vamos utilizando. Y también queremos automatización de la infra, IaaC.
 
-https://www.udemy.com/course/decodingdevops/learn/lecture/26464654#overview
-en este explican los puertos y tal...
 ## 0.1 El diseño arquitectura:
 ### 0.1.1 Resumen técnico, rápido:
 
