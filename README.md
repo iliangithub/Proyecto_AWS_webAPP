@@ -50,6 +50,10 @@ en este explican los puertos y tal...
 | TCP personalizado: 5672 | from:  delta-TomCat-APP-SG |
 | Todo el tráfico | from:  delta-Backend-SG **(sí mismo)** |
 
+> [!TIP]
+>Esta última regla, primero se crea el SG, y luego otra vez vuelves a editarlo para crear esa última regla de entrada del Backend-SG.
+>
+
 #### KEY PAIR:
 
 | NAME: | TIPO DE PAR-CLAVE: | FORMATO |
