@@ -31,12 +31,17 @@ en este explican los puertos y tal...
 | delta-TomCat-APP-SG | delta-Backend-SG |   |   |   |
 | delta-Backend-SG| delta-Backend-SG |   |   |   |
 
-#### KEY PAIR
+#### KEY PAIR:
 
 | NAME: | TIPO DE PAR-CLAVE: | FORMATO |
 |---|---|---|
 | delta-parclave-produccion | RSA | .pem |
 
+#### S3 KEY-ACCESS (Para acceder desde el CLI):
+
+| NAME: | TIPO DE PAR-CLAVE: | FORMATO |
+|---|---|---|
+| delta-parclave-produccion | RSA | .pem |
 
 #### EC2 Instances:
 
@@ -56,7 +61,7 @@ en este explican los puertos y tal...
 | delta-mc01 | delta-Backend-SG |   |   |   |
 | delta-db01 | delta-Backend-SG |   |   |   |
 
-Auto Scaling Group:
+#### Auto Scaling Group:
 
 efs s3
 EBS, para almacenar las instancias.
