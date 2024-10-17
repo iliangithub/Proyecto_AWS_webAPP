@@ -10,19 +10,19 @@ lift and shift strategy.
 >
 >**Características principales:**
 >- **Sin modificación del código**: En lugar de rediseñar o refactorizar la aplicación para aprovechar las capacidades específicas de la nube, simplemente se mueve tal como está.
-- **Migración rápida**: Esta estrategia es más rápida que otras porque no implica una reescritura importante de la aplicación.
-- **Reducción de costos iniciales**: Puede ser menos costoso al inicio, ya que no requiere una inversión significativa en desarrollo o reingeniería de la aplicación.
-- **Uso de infraestructura como servicio (IaaS)**: Normalmente, en lugar de utilizar servicios nativos de la nube (como PaaS o SaaS), las instancias o máquinas virtuales de la aplicación se migran a una infraestructura virtualizada similar (como EC2 en AWS).
+>- **Migración rápida**: Esta estrategia es más rápida que otras porque no implica una reescritura importante de la aplicación.
+>- **Reducción de costos iniciales**: Puede ser menos costoso al inicio, ya que no requiere una inversión significativa en desarrollo o reingeniería de la aplicación.
+>- **Uso de infraestructura como servicio (IaaS)**: Normalmente, en lugar de utilizar servicios nativos de la nube (como PaaS o SaaS), las instancias o máquinas virtuales de la aplicación se migran a una infraestructura virtualizada similar (como EC2 en AWS).
 >
 >**Ventajas:**
-- **Simplicidad**: Es una opción sencilla y rápida para mover aplicaciones a la nube.
-- **Menor riesgo**: Como no se cambia la aplicación, el riesgo de introducir errores es menor.
-- **Continuidad**: El enfoque garantiza que las aplicaciones se sigan ejecutando de la misma manera, por lo que no hay grandes interrupciones para los usuarios.
+>- **Simplicidad**: Es una opción sencilla y rápida para mover aplicaciones a la nube.
+>- **Menor riesgo**: Como no se cambia la aplicación, el riesgo de introducir errores es menor.
+>- **Continuidad**: El enfoque garantiza que las aplicaciones se sigan ejecutando de la misma manera, por lo que no hay grandes interrupciones para los usuarios.
 >
 > **Desventajas:**
-- **No se optimiza para la nube**: La aplicación no se beneficia completamente de las capacidades nativas de la nube (como escalabilidad automática, optimización de costos, etc.).
-- **Costos a largo plazo**: Aunque es más barato inicialmente, puede ser más costoso con el tiempo debido a la falta de optimización.
-- **Rendimiento limitado**: Las aplicaciones no se ajustan para aprovechar las optimizaciones en rendimiento y recursos que ofrecen los servicios en la nube.
+>- **No se optimiza para la nube**: La aplicación no se beneficia completamente de las capacidades nativas de la nube (como escalabilidad automática, optimización de costos, etc.).
+>- **Costos a largo plazo**: Aunque es más barato inicialmente, puede ser más costoso con el tiempo debido a la falta de optimización.
+>- **Rendimiento limitado**: Las aplicaciones no se ajustan para aprovechar las optimizaciones en rendimiento y recursos que ofrecen los servicios en la nube.
 >
 > **¿Cuándo utilizar "Lift and Shift"?**
 Es una buena opción si quieres migrar rápidamente sin modificar tus aplicaciones o si el tiempo y el presupuesto son limitados. También se utiliza cuando una organización quiere hacer la transición a la nube de forma progresiva, con la idea de optimizar las aplicaciones después.
