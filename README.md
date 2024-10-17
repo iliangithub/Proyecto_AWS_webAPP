@@ -142,7 +142,7 @@ Y también tendríamos que haber añadido el puerto 22 SSH, en el TomCat app:
 Con el backend, exatamente igual:
 ![image](https://github.com/user-attachments/assets/378cfaee-e630-4e79-96e1-9691889dc147)
 
-## 1.1 Pares-Claves (Creación).
+## 1.2 Pares-Claves (Creación).
 ![image](https://github.com/user-attachments/assets/3c7ea6d4-b3e4-492b-ade8-9d3cc359d0c3)
 
 ![image](https://github.com/user-attachments/assets/fbe23bdb-11c3-4317-b52a-d6b26d6b41ab)
@@ -620,7 +620,7 @@ mvn install
 
 Ahora, voy a subir todo a S3 bucket, y no es posible sin la autenticación.
 
-## Crear un usuario IAM y subir el artefacto a S3 bucket.
+## 5.2 Crear un usuario IAM y subir el artefacto a S3 bucket.
 
 ![image](https://github.com/user-attachments/assets/96038202-4470-4f40-921c-4fd3244fe0ef)
 
@@ -647,7 +647,7 @@ descargo el .csv.
 
 Ya tenemos las claves.
 
-## Subir el artefacto a S3 (Necesito las claves, anteriores).
+## 5.3 Subir el artefacto a S3 (Necesito las claves, anteriores).
 
 y ahora en el CLI del Visual Studio:
 
@@ -682,7 +682,7 @@ dentro, está el artefacto:
 
 ![image](https://github.com/user-attachments/assets/8002a733-7836-4ed2-80be-466641007579)
 
-### Descargar y Desplegar el artefacto (En la instancia TomCat).
+### 5.3.1 Descargar y Desplegar el artefacto (En la instancia TomCat).
 Prerequisitos:
 - El AWS CLI instalado **DENTRO DEL TomCat.**
 - Descargarlo y desplegarlo.
@@ -746,10 +746,10 @@ sudo systemctl start tomcat10
 
 ![image](https://github.com/user-attachments/assets/98f68fbb-4140-4e2a-a76f-98a900a268dc)
 
-# Balanceador de Carga.
+# 6.0 Balanceador de Carga.
 Requisito:
 
-## Crear el Target Group.
+## 6.1 Crear el Target Group.
 Estamos en EC2 y vamos a crear un "Target Group".
 
 ![image](https://github.com/user-attachments/assets/4aa33d11-92b3-48f5-bad6-69fcb69e9a0e)
@@ -762,7 +762,7 @@ Le ponemos un nombre, y cambiamos el puerto a 8080.
 
 Y creamos el grupo de destino o el Target Group.
 
-## Crear el Balanceador de Carga
+## 6.2 Crear el Balanceador de Carga
 
 ![image](https://github.com/user-attachments/assets/00204581-f1e1-4cbb-a6e2-bdd18ebbbb5f)
 
@@ -786,7 +786,7 @@ Y creamos el grupo de destino o el Target Group.
 
 Una vez esté hecho el balanceador.
 
-## Comprobar que funcione.
+## 6.3 Comprobar que funcione el ELB.
 
 Copiamos el enlace:
 
@@ -883,7 +883,7 @@ Y este enlace, tenemos que pegarlo en el navegador.
 >
 > ![image](https://github.com/user-attachments/assets/fe9ebb5b-5823-4a7e-aa06-4949c9c57ab9)
 >
-> #### OPCIÓN DESCARTADA 3
+> #### OPCIÓN 3 (la correcta)
 >
 > TENGO QUE ACCEDER DESDE EL BALANCEADOR DE CARGA, Y NO DIRECTAMENTE DESDE EL NOMBRE DE DOMINIO DEL TOMCAT-APP01
 >
@@ -891,7 +891,7 @@ Y este enlace, tenemos que pegarlo en el navegador.
 >
 > 
 
-# Grupoo de Autoescalado (Autoscaling Group).
+# 7.0 Grupoo de Autoescalado (Autoscaling Group).
 
 Entonces, lo que queremos es básicamente escalar o reducir, dependiendo de la carga.
 Requisitos:
@@ -899,7 +899,7 @@ Requisitos:
 - La plantilla de lanzamiento de la instancia.
 - El grupo de autoescalado.
 
-## Crear la AMI:
+## 7.1 Crear la AMI:
 
 Desde el EC2, buscamos la instancia y le damos a crear imagen:
 
@@ -912,7 +912,7 @@ El resto de cosas, no hay que tocarlas.
 
 Debemos esperar a que ponga "Disponible".
 
-## Crear la plantilla:
+## 7.2 Crear la plantilla:
 Ahora, nos vamos a Launch Templates y la creamos:
 
 ![image](https://github.com/user-attachments/assets/0a8cf8d6-5223-4f14-9443-40555f642d0c)
@@ -933,7 +933,7 @@ Selecciono la AMI:
 
 ![image](https://github.com/user-attachments/assets/dc4d81bd-c2e0-43b5-8d4d-849f868edde5)
 
-## Crear Grupo de Autoescalado:
+## 7.3 Crear Grupo de Autoescalado:
 
 ![image](https://github.com/user-attachments/assets/7b1f48e3-1bd8-46a2-8618-472f752cc0c4)
 
@@ -951,7 +951,7 @@ Selecciono la AMI:
 
 ![image](https://github.com/user-attachments/assets/84145a5c-824f-4581-9499-76e9c91b3f71)
 
-### Comprobación:
+### 7.4 Comprobación:
 
 Como podemos comprobar funciona:
 ![image](https://github.com/user-attachments/assets/0f2823e5-59f4-4e9d-8eb3-019bb6d4a5e2)
@@ -963,7 +963,7 @@ Como podemos comprobar funciona:
 
 ![image](https://github.com/user-attachments/assets/11e772e0-108b-4163-b067-4bc50d90eeec)
 
-# Final, formas alternativas de hacerlo (PaaS y SaaS):
+# 8.0 Final, formas alternativas de hacerlo (PaaS y SaaS):
 
 
 
