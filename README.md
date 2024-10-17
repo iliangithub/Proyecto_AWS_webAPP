@@ -22,25 +22,28 @@ https://www.udemy.com/course/decodingdevops/learn/lecture/26464654#overview
 en este explican los puertos y tal...
 ## 0.1 El diseño arquitectura:
 ### Security Group:
-- delta-ELB-SG
-- delta-TomCat-APP-SG
-- delta-Backend-SG
+
+| NAME: | SECURITY GROUP: | KEY-PAIR |   |   |
+|---|---|---|---|---|
+| delta-ELB-SG | delta-TomCat-APP-SG |   |   |   |
+| delta-TomCat-APP-SG | delta-Backend-SG |   |   |   |
+| delta-Backend-SG| delta-Backend-SG |   |   |   |
 
 ### KEY PAIR
 
-| NAME: | TIPO DE PAR-CLAVE: | FORMATO |   |   |
-|---|---|---|---|---|
-| delta-parclave-produccion | RSA | .pem |   |   |
+| NAME: | TIPO DE PAR-CLAVE: | FORMATO |
+|---|---|---|
+| delta-parclave-produccion | RSA | .pem |
 
 
 ### EC2 Instances:
 
 | NAME: | SECURITY GROUP: | KEY-PAIR: | AMI: | TYPE: |
 |---|---|---|---|---|
-| delta-TomCat-app01 | delta-TomCat-APP-SG |   | Ubuntu 24.04 | t2.micro |
-| delta-rmq01 | delta-Backend-SG |   | Amazon | t2.micro |
-| delta-mc01 | delta-Backend-SG |   | Amazon  | t2.micro |
-| delta-db01 | delta-Backend-SG |   | Amazon | t2.micro |
+| delta-TomCat-app01 | delta-TomCat-APP-SG | delta-parclave-produccion | Ubuntu 24.04 | t2.micro |
+| delta-rmq01 | delta-Backend-SG | delta-parclave-produccion | Amazon | t2.micro |
+| delta-mc01 | delta-Backend-SG | delta-parclave-produccion | Amazon  | t2.micro |
+| delta-db01 | delta-Backend-SG | delta-parclave-produccion | Amazon | t2.micro |
 
 ### ELB:
 
