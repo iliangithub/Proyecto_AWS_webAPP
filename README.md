@@ -25,11 +25,30 @@ en este explican los puertos y tal...
 
 #### Security Group:
 
-| NAME: | SECURITY GROUP: | KEY-PAIR |   |   |
-|---|---|---|---|---|
-| delta-ELB-SG | delta-TomCat-APP-SG |   |   |   |
-| delta-TomCat-APP-SG | delta-Backend-SG |   |   |   |
-| delta-Backend-SG| delta-Backend-SG |   |   |   |
+| NAME: |
+|---|
+| delta-ELB-SG |
+| delta-TomCat-APP-SG |
+| delta-Backend-SG |
+
+| REGLAS DE ENTRADA: delta-ELB-SG | |
+|---|---|
+| http: 80 | from: 0.0.0.0 /0 |
+| https: 443 | from: 0.0.0.0 /0 |
+
+| REGLAS DE ENTRADA: delta-TomCat-APP-SG | |
+|---|---|
+| ssh: 22 | from: My IP |
+| http: 8080 | from: My IP |
+| https: 443 | from: delta-ELB-SG |
+
+| REGLAS DE ENTRADA: delta-Backend-SG | |
+|---|---|
+| ssh: 22 | from: My IP |
+| SQL/Aurora: 3306 | from:  delta-TomCat-APP-SG |
+| TCP personalizado: 11211 | from:  delta-TomCat-APP-SG |
+| TCP personalizado: 5672 | from:  delta-TomCat-APP-SG |
+| Todo el tráfico | from:  delta-Backend-SG **(sí mismo)** |
 
 #### KEY PAIR:
 
@@ -38,7 +57,7 @@ en este explican los puertos y tal...
 | delta-parclave-produccion | RSA | .pem |
 
 #### S3 KEY-ACCESS (Para acceder desde el CLI, user S3_admin):
-Primero tienes que crear el usuario S3_admin.
+Primero tienes que crear el usuario S3_admin. **(APARTADO 5.2).**
 
 | CASO DE USO: | Establecer el valor de etiqueta de descripción: |
 |---|---|
@@ -55,12 +74,10 @@ Primero tienes que crear el usuario S3_admin.
 
 #### ELB:
 
-| NAME: | SECURITY GROUP: | KEY-PAIR |   |   |
-|---|---|---|---|---|
-| delta-TomCat-app01 | delta-TomCat-APP-SG |   |   |   |
-| delta-rmq01 | delta-Backend-SG |   |   |   |
-| delta-mc01 | delta-Backend-SG |   |   |   |
-| delta-db01 | delta-Backend-SG |   |   |   |
+| TIPO: | NAME: | ZONAS DE DISPONIBILIDAD | SECURITY GROUP: |
+|---|---|---|---|
+| Balanceador de carga de aplicaciones | delta-produccion-ELB | Todas | delta-ELB-SG |
+
 
 #### Auto Scaling Group:
 
@@ -773,7 +790,7 @@ sudo systemctl start tomcat10
 
 ![image](https://github.com/user-attachments/assets/98f68fbb-4140-4e2a-a76f-98a900a268dc)
 
-# 6.0 Balanceador de Carga.
+# 6.0 Balanceador de Carga, ELB.
 Requisito:
 
 ## 6.1 Crear el Target Group.
