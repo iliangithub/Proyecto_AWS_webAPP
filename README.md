@@ -21,13 +21,35 @@ entonces, queremos que sea flexible, escalable, e ir pagando de poco a poco por 
 https://www.udemy.com/course/decodingdevops/learn/lecture/26464654#overview
 en este explican los puertos y tal...
 ## 0.1 El diseño arquitectura:
-EC2 Instancias:
-- delta-TomCat-app01
-- delta-rmq01
-- delta-mc01
-- delta-db01
+### Security Group:
+- delta-ELB-SG
+- delta-TomCat-APP-SG
+- delta-Backend-SG
 
-ELB:
+### KEY PAIR
+
+| NAME: | TIPO DE PAR-CLAVE: | FORMATO |   |   |
+|---|---|---|---|---|
+| delta-parclave-produccion | RSA | .pem |   |   |
+
+
+### EC2 Instances:
+
+| NAME: | SECURITY GROUP: | KEY-PAIR |   |   |
+|---|---|---|---|---|
+| delta-TomCat-app01 | delta-TomCat-APP-SG |   |   |   |
+| delta-rmq01 | delta-Backend-SG |   |   |   |
+| delta-mc01 | delta-Backend-SG |   |   |   |
+| delta-db01 | delta-Backend-SG |   |   |   |
+
+### ELB:
+
+| NAME: | SECURITY GROUP: | KEY-PAIR |   |   |
+|---|---|---|---|---|
+| delta-TomCat-app01 | delta-TomCat-APP-SG |   |   |   |
+| delta-rmq01 | delta-Backend-SG |   |   |   |
+| delta-mc01 | delta-Backend-SG |   |   |   |
+| delta-db01 | delta-Backend-SG |   |   |   |
 
 Auto Scaling Group:
 
@@ -37,9 +59,11 @@ S3, para almacenar el artefacto, construido por Maven.
 
 amazon certificate mana
 
-Route 53
+Route 53, Servidor DNS
 - Zona: delta.es
--      Registro:
+- Registro de la Zona: db01.delta.es
+- Registro de la Zona: rmq01.delta.es
+- Registro de la Zona: mc01.delta.es
 
 ![Proyecto “delta”](https://github.com/user-attachments/assets/6b1bc344-ca17-44de-b937-97203a8cda37)
 
