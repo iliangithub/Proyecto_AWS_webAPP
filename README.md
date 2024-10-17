@@ -23,7 +23,7 @@ en este explican los puertos y tal...
 ## 0.1 El diseño arquitectura:
 ### 0.1.1 Resumen técnico, rápido:
 
-##### Security Group:
+#### Security Group:
 
 | NAME: | SECURITY GROUP: | KEY-PAIR |   |   |
 |---|---|---|---|---|
