@@ -588,7 +588,8 @@ Son herramientas esenciales que se utilizan para montar y construir artefactos e
 
 Ahora, vamos a construir el artefacto:
 
-Tenemos que estar en:
+Tenemos que estar en este directorio, he hecho un `ls` para que se vea:
+
 ![image](https://github.com/user-attachments/assets/3b1dff38-a825-4319-a0ab-396dcf230b35)
 
 ```
@@ -616,38 +617,57 @@ mvn install
 >**Maven guarda el artefacto compilado y empaquetado (por ejemplo, un archivo .jar o .war) en el subdirectorio target dentro del directorio raíz de tu proyecto.**
 >
 
+Tal y como se puede comprobar, efectivamente ha creado un directorio `target/` y dentro pues:
+
 ![image](https://github.com/user-attachments/assets/88c678ab-ec5e-42bd-9242-9ee849783a5a)
 
-Ahora, voy a subir todo a S3 bucket, y no es posible sin la autenticación.
+Ahora, voy a subir todo a S3 bucket.
+
+> [!WARNING]
+> no es posible sin la autenticación. Ya que vamos a tener que usar el AWS CLI, y tendrá que saber pues a que cuenta va a ir.
+> 
 
 ## 5.2 Crear un usuario IAM y subir el artefacto a S3 bucket.
 
+Entonces, vamos a crear un usuario especial solo para acceder al S3 bucket. Por lo tanto vamos a darle SÓLO permisos para el S3 bucket.
+
 ![image](https://github.com/user-attachments/assets/96038202-4470-4f40-921c-4fd3244fe0ef)
 
-Este va a ser el nombre:
+Este va a ser el nombre, `S3_admin`:
+
 ![image](https://github.com/user-attachments/assets/aaa75c60-f920-409d-90aa-28d81503a534)
 
-No necesitamos, ningun acceso a la consola, solo necesitamos la clave de acceso y la clave privada.
+No necesitamos, ningún acceso a la consola, solo necesitamos la clave de acceso y la clave privada.
 
 ![image](https://github.com/user-attachments/assets/db70ef15-b854-4d57-b4c7-08544b1b9bd6)
 
+Una vez creado, vamos al panel de usuarios, le damos click al `S3_admin`, luego a, credenciales de seguridad y bajamos para abajo hasta llegar a "claves de acceso". Y creamos:
+
 ![image](https://github.com/user-attachments/assets/17e56d00-27aa-407c-a726-7f37433202f2)
 
+Esta es la opción que queremos, pues es lo que vamos a hacer, usar el CLI del AWS:
+
 ![image](https://github.com/user-attachments/assets/41e0cbee-dd6f-42a9-a711-b1454b63151a)
+
+También le tengo que dar a confirmar:
+"Entiendo la recomendación anterior y deseo proceder a la creación de una clave de acceso".
 
 > [!WARNING]
 > **¿Cuál es el riesgo?**
 >
 
+NO voy a "establecer el valor de etiqueta de descripción" pues es opcional.
+En el tercer y último paso, pues ya nos proporcionan las claves:
+
 ![image](https://github.com/user-attachments/assets/d94dd8a3-fbb1-4f94-886e-6570572fbc69)
 
-descargo el .csv.
+Descargo el .csv.
 
 ![image](https://github.com/user-attachments/assets/d08e9eb6-2f81-48cd-9e9f-99c2f2570f13)
 
 Ya tenemos las claves.
 
-## 5.3 Subir el artefacto a S3 (Necesito las claves, anteriores).
+## 5.3 Subir el artefacto a S3 (Necesito autenticarme con el user y pares-clave anterior).
 
 y ahora en el CLI del Visual Studio:
 
