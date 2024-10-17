@@ -21,7 +21,8 @@ entonces, queremos que sea flexible, escalable, e ir pagando de poco a poco por 
 https://www.udemy.com/course/decodingdevops/learn/lecture/26464654#overview
 en este explican los puertos y tal...
 ## 0.1 El diseño arquitectura:
-### Security Group:
+### 0.1.1 Resumen técnico, rápido:
+##### Security Group:
 
 | NAME: | SECURITY GROUP: | KEY-PAIR |   |   |
 |---|---|---|---|---|
@@ -29,14 +30,14 @@ en este explican los puertos y tal...
 | delta-TomCat-APP-SG | delta-Backend-SG |   |   |   |
 | delta-Backend-SG| delta-Backend-SG |   |   |   |
 
-### KEY PAIR
+#### KEY PAIR
 
 | NAME: | TIPO DE PAR-CLAVE: | FORMATO |
 |---|---|---|
 | delta-parclave-produccion | RSA | .pem |
 
 
-### EC2 Instances:
+#### EC2 Instances:
 
 | NAME: | SECURITY GROUP: | KEY-PAIR: | AMI: | TYPE: |
 |---|---|---|---|---|
@@ -45,7 +46,7 @@ en este explican los puertos y tal...
 | delta-mc01 | delta-Backend-SG | delta-parclave-produccion | Amazon  | t2.micro |
 | delta-db01 | delta-Backend-SG | delta-parclave-produccion | Amazon | t2.micro |
 
-### ELB:
+#### ELB:
 
 | NAME: | SECURITY GROUP: | KEY-PAIR |   |   |
 |---|---|---|---|---|
@@ -69,9 +70,11 @@ Route 53, Servidor DNS
 - Registro de la Zona: rmq01.delta.es
 - Registro de la Zona: mc01.delta.es
 
+### 0.1.2 La Arquitectura, visual:
+
 ![Proyecto “delta”](https://github.com/user-attachments/assets/6b1bc344-ca17-44de-b937-97203a8cda37)
 
-### 0.1.1 Explicación de la Arquitectura:
+### 0.1.3 Explicación de la Arquitectura:
 Nuestros usuarios, van a acceder al sitio web, utilizando una URL y esa URL, va a apuntar al balanceador de carga.
 
 >[!IMPORTANT]
