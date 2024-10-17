@@ -37,11 +37,12 @@ en este explican los puertos y tal...
 |---|---|---|
 | delta-parclave-produccion | RSA | .pem |
 
-#### S3 KEY-ACCESS (Para acceder desde el CLI):
+#### S3 KEY-ACCESS (Para acceder desde el CLI, user S3_admin):
+Primero tienes que crear el usuario S3_admin.
 
-| NAME: | TIPO DE PAR-CLAVE: | FORMATO |
-|---|---|---|
-| delta-parclave-produccion | RSA | .pem |
+| CASO DE USO: | Establecer el valor de etiqueta de descripción: |
+|---|---|
+| Interfaz de comandos CLI| (nada) |
 
 #### EC2 Instances:
 
