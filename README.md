@@ -36,8 +36,10 @@ Nuestros usuarios, van a acceder al sitio web, utilizando una URL y esa URL, va 
 >[!IMPORTANT]
 >
 > - La URL puede ser una URL de verdad, con un nombre de dominio de verdad, comprado.
+>   (NECESITAMOS USAR HTTPS, 443, PAGAR EL DOMINIO).
+>   
 > - O podemos, simplemente usar el **nombre de dominio** del **Balanceador de carga ELB**
->
+>   (NECESITAMOS USAR HTTP, 80, NO PAGAR NINGÚN DOMINIO).
 utilizaremos, https, y habrá un certificado que será respaldado por el ACM de amazon (Amazon Certificate Manager).
 El balanceador de carga, va a estar en un Grupo de Seguridad (Firewall) y solo aceptará peticiones https, solo tráfico https.
 Entonces, el balanceador carga, mandará a la instancia TomCat, este TOmCat, en realidad, tendrá varias instancias, y serán pues manejadas por el grupo de autoescalado. Entonces, dependiendo del tráfico y las peticiones y recursos, pues escalaremos o reduciremos. Estas instancias, pues estarán en otro grupo de de seguridad y solo aceptarán tráfico en el puerto 8080 y solo del balanceador de carga, ahora.
