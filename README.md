@@ -85,14 +85,19 @@ Primero tienes que crear el usuario S3_admin. **(APARTADO 5.2).**
 
 #### Auto Scaling Group:
 
+- AMI de la instancia (app01).
+- La plantilla de lanzamiento de la instancia.
+- Grupo de autoescalado.
+  
 efs s3
-EBS, para almacenar las instancias.
 
-S3, para almacenar el artefacto, construido por Maven.
+#### EBS, para almacenar las instancias.
+
+#### S3, para almacenar el artefacto, construido por Maven.
 
 amazon certificate mana
 
-Route 53, Servidor DNS
+#### Route 53, Servidor DNS
 - Zona: delta.es
 - Registro de la Zona: db01.delta.es
 - Registro de la Zona: rmq01.delta.es
