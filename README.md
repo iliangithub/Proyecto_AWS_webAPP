@@ -667,9 +667,13 @@ Descargo el .csv.
 
 Ya tenemos las claves.
 
-## 5.3 Subir el artefacto a S3 (Necesito autenticarme con el user y pares-clave anterior).
+## 5.3 Subir el artefacto a S3 (Necesito autenticarme el par-claves anterior).
 
-y ahora en el CLI del Visual Studio:
+**Entonces, hemos creado un usuario `S3_admin`, que también está asociado pues a un par claves, es así como iniciamos sesión.**
+
+**(NO vamos a utilizar, user y password)**
+
+Y ahora en el CLI del Visual Studio:
 
 ```
 aws configure
@@ -677,7 +681,8 @@ aws configure
 
 ![image](https://github.com/user-attachments/assets/d4f985fb-8a7d-46fb-ab8a-f8271230d42f)
 
-El S3 bucket, el nombre tiene que ser 100% único, no como el mio, si no, como el de ningún otro:
+El S3 bucket, el nombre tiene que ser **100% único**, no como el mío, si no, como el de ningún otro:
+
 ```
 aws s3 mb s3://forilianprojectbucket-delta
 ```
@@ -709,6 +714,7 @@ Prerequisitos:
 
 > [!WARNING]
 > **PROBLEMA:**
+> 
 >¿Cómo vamos a autenticarnos ahora, desde el TomCat, para poder descargar desde el S3 bucket?
 >  
 >Anteriormente, utilizamos el AWS CLI y utilizamos las claves IAM para poder autenticarme, al Usuario ese en cuestión que creamos en el IAM, para poder "pushear", subir el artefacto.
