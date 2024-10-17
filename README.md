@@ -21,12 +21,25 @@ entonces, queremos que sea flexible, escalable, e ir pagando de poco a poco por 
 https://www.udemy.com/course/decodingdevops/learn/lecture/26464654#overview
 en este explican los puertos y tal...
 ## 0.1 El diseño arquitectura:
-EC2 instances
-Elb
-Auto scaling
-efs s3 para el almacenamiento
+EC2 Instancias:
+- delta-TomCat-app01
+- delta-rmq01
+- delta-mc01
+- delta-db01
+
+ELB:
+
+Auto Scaling Group:
+
+efs s3
+
+S3, para almacenar el artefacto, construido por Maven.
+
 amazon certificate mana
-route 53
+
+Route 53
+- Zona: delta.es
+-      Registro:
 
 ![Proyecto “delta”](https://github.com/user-attachments/assets/6b1bc344-ca17-44de-b937-97203a8cda37)
 
@@ -40,9 +53,21 @@ Nuestros usuarios, van a acceder al sitio web, utilizando una URL y esa URL, va 
 >   
 > - O podemos, simplemente usar el **nombre de dominio** del **Balanceador de carga ELB**
 >   (NECESITAMOS USAR HTTP, 80, NO PAGAR NINGÚN DOMINIO).
-utilizaremos, https, y habrá un certificado que será respaldado por el ACM de amazon (Amazon Certificate Manager).
-El balanceador de carga, va a estar en un Grupo de Seguridad (Firewall) y solo aceptará peticiones https, solo tráfico https.
-Entonces, el balanceador carga, mandará a la instancia TomCat, este TOmCat, en realidad, tendrá varias instancias, y serán pues manejadas por el grupo de autoescalado. Entonces, dependiendo del tráfico y las peticiones y recursos, pues escalaremos o reduciremos. Estas instancias, pues estarán en otro grupo de de seguridad y solo aceptarán tráfico en el puerto 8080 y solo del balanceador de carga, ahora.
+
+Si utilizamos, https, y habrá un certificado que será respaldado por el ACM de amazon (Amazon Certificate Manager).
+
+Y si no, pues eso, simplemente accederemos desde el nombre de dominio del ELB.
+
+El balanceador de carga, va a estar en un Grupo de Seguridad (Firewall) y solo aceptará peticiones https, solo tráfico https o también peticiones http, sólo tráfico http.
+
+(En mi caso, he puesto las dos reglas, que acepte los dos tipos).
+
+Entonces, el balanceador carga, mandará la petición a la instancia `app01` (TomCat), este TomCat, en realidad, tendrá varias instancias o puede tener varias, y serán pues manejadas por el grupo de autoescalado. 
+
+Al **principio crearemos SÓLO UNA INSTANCIA**, a raíz de esa, crearemos una AMI, la plantilla y **AL FINAL** pues el Grupo de Escalado, ASG.
+
+Entonces, dependiendo del tráfico y las peticiones y recursos, pues escalará o reducirá, **AUTOMÁTICAMENTE**. 
+Estas instancias, pues estarán en otro grupo de de seguridad y solo aceptarán tráfico en el puerto 8080 y solo del balanceador de carga, ahora.
 
 Necesitamos el backend, el MySQL, MemCache y RabbitMQ, las IP de estos servidores del backend, o los servicios, van estar pues en Route 53, en el DNS privado.
 
