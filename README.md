@@ -150,7 +150,7 @@ Con el backend, exatamente igual:
 # 2.0 Crear las instancias.
 Vamos a clonar el source code
 
-## Para la base de datos:
+## 2.1 Para la base de datos, MariaDB:
 
 **Nombre y etiquetas:**
 | Clave    | Valor |
@@ -199,7 +199,7 @@ sudo mysql -u root -p"$DATABASE_PASS" -e "FLUSH PRIVILEGES"
 sudo systemctl restart mariadb
 ```
 
-## Para el memcached:
+## 2.2 Para el Memcached:
 
 **Nombre y etiquetas:**
 
@@ -239,7 +239,7 @@ firewall-cmd --runtime-to-permanent
 sudo memcached -p 11211 -U 11111 -u memcached -d
 ```
 
-## Para el RabbitMQ:
+## 2.3 Para el RabbitMQ:
 
 **Nombre y etiquetas:**
 
@@ -283,7 +283,7 @@ sudo rabbitmqctl set_user_tags test administrator
 sudo systemctl restart rabbitmq-server
 ```
 
-## Para la TomCat-app01:
+## 2.4 Para la TomCat-app01:
 
 **Nombre y etiquetas:**
 
@@ -330,8 +330,8 @@ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip
 unzip awscliv2.zip
 sudo ./aws/install
 ```
-# Comprobaciones (podría fallar o haber errores).
-## Máquina MySQL.
+# 3.0 Comprobaciones (podría fallar o haber errores).
+## 3.1 Máquina MySQL.
 ```
 sudo systemctl status mariadb
 ```
@@ -373,7 +373,7 @@ Para salir del MariaDB:
 quit
 ```
 A por la siguiente máquina.
-## Máquina MemCache.
+## 3.2 Máquina MemCache.
 
 ```
 [ec2-user@ip-172-31-xx-xx ~]$ ss -tunlp | grep 11211
@@ -382,7 +382,7 @@ tcp   LISTEN 0      1024                             [::1]:11211         [::]:*
 ```
 
 
-## Máquina RabbitMQ-server.
+## 3.3 Máquina RabbitMQ-server.
 
 ```
 [ec2-user@ip-172-31-38-8 ~]$ systemctl status rabbitmq-server
@@ -405,7 +405,7 @@ tcp   LISTEN 0      1024                             [::1]:11211         [::]:*
              └─26152 /bin/sh -s rabbit_disk_monitor
 ```
 
-## Máquina TomCat-app01.
+## 3.4 Máquina TomCat-app01.
 
 ```
 systemctl status tomcat10
@@ -454,7 +454,7 @@ Este es nuestro archivo /etc/hosts:
 >
 > (Mapear = asociar un nombre de dominio a una dirección IP)
 >
-> ### ¿Por qué solo sirve de forma local el archivo /etc/hosts?
+> ### 3.4.1 ¿Por qué solo sirve de forma local el archivo /etc/hosts?
 >El archivo /etc/hosts es un archivo de configuración presente en sistemas Unix y Linux, que permite hacer este mapeo de manera local en una máquina específica. Es local porque solo afecta esa máquina en particular; cualquier otro dispositivo (como el de un cliente externo) no verá ni usará los cambios que realices en ese archivo.
 >
 >**Cada máquina tiene su propio archivo /etc/hosts: Cada vez que una máquina necesita traducir un dominio a una IP, primero revisa su propio archivo /etc/hosts antes de hacer consultas a servidores DNS. Esto significa que cualquier cambio en este archivo solo será visible para esa máquina en particular.**
@@ -463,11 +463,11 @@ Este es nuestro archivo /etc/hosts:
 >
 >Limitado a resoluciones locales: En redes pequeñas o entornos de desarrollo, el archivo /etc/hosts puede ser útil si necesitas probar algo rápidamente o hacer una configuración temporal. Sin embargo, en entornos de producción (como en AWS), donde muchos usuarios deben acceder a tu instancia o servicio, necesitas un sistema centralizado de resolución de nombres como Route 53, que es un servidor DNS.
 >
->### ¿Por qué necesitas un servidor DNS como Route 53?
+>### 3.4.2 ¿Por qué necesitas un servidor DNS como Route 53?
 >Cuando quieres que tu dominio sea accesible para cualquier persona en internet (porque no tienen tu archivo /etc/hosts/), los navegadores y sistemas operativos de los usuarios no van a consultar tu archivo /etc/hosts. **En su lugar, consultan servidores DNS distribuidos por todo el mundo**. Route 53 es un servicio de DNS que permite gestionar estos mapeos de forma centralizada y global, permitiendo que cualquier persona pueda acceder a tu dominio, no solo una máquina local.
 >
 
-# Route 53 (DNS Server).
+# 4.0 Route 53 (DNS Server).
 
 Así que buscamos en la consola de AWS, el servicio Route 53:
 
@@ -475,7 +475,7 @@ Así que buscamos en la consola de AWS, el servicio Route 53:
 
 Tenemos que crear una zona, y allí estará nuestro nombre de dominio. Y en ese dominio, tendremos diferentes Hosts. Y esos registros de Hosts, tendrán la IP o el CNAME.
 
-## Crear Zona.
+## 4.1 Crear Zona.
 
 > [!TIP]
 > Una zona DNS es una porción del espacio de nombres DNS que se administra de manera independiente. Puede contener uno o varios registros DNS y puede abarcar un dominio completo o una subparte de él.
@@ -493,7 +493,7 @@ VPC, es la Red, de esa región:
 
 ![image](https://github.com/user-attachments/assets/117855f3-fe28-4a13-9ea0-a6ab74b5d3b5)
 
-## Crear Registros.
+## 4.2 Crear Registros.
 Y ahora creamos un "record", un registro:
 
 ![image](https://github.com/user-attachments/assets/059b9a75-25a6-4a98-a072-56ef2dfa9c9b)
@@ -527,7 +527,7 @@ Realmente, solamente necesitamos estos 3 registros, no más. Porque la aplicacci
 
 ![image](https://github.com/user-attachments/assets/6e3ee6b0-3c3b-4b91-af6e-cf79decf06ec)
 
-# Construir y Desplegar el artefacto.
+# 5.0 Construir y Desplegar el artefacto.
 
 > [!TIP]
 > En DevOps, un artefacto se refiere a cualquier archivo generado durante el proceso de desarrollo de software que puede ser usado en las siguientes fases del ciclo de vida del software. Los artefactos son los resultados tangibles del proceso de construcción y despliegue de una aplicación.
@@ -559,7 +559,7 @@ y así pues añadir el registro DNS. Este es el resultado, lo tenemos que hacer 
 
 Y ahora, vamos a montar / construir el artefacto.
 
-## Construir el artefacto.
+## 5.1 Construir el artefacto.
 
 Prerequisitos:
 - Maven
@@ -595,7 +595,7 @@ Tenemos que estar en:
 mvn install
 ```
 >
->### Pasos que realiza `mvn install`:
+>### 5.1.1 Pasos que realiza `mvn install`:
 >**Limpieza previa (si es necesario):**
 >Si has configurado pasos de limpieza, como eliminar los artefactos anteriores, esto puede suceder antes de compilar.
 >
