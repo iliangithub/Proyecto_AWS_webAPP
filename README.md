@@ -1098,6 +1098,8 @@ En cuanto al Backend, para las base de datos, utilizaremos instancias RDS, vamos
 - PaaS
 - SaaS
 
+![image](https://github.com/user-attachments/assets/f450d367-0856-4c85-8753-a3f931c86a7b)
+
 Entonces, el usuario accederá a nuestra URL, que será resuelta a un punto final desde Amazon Route 53.
 
 El punto final será parte de Amazon CloudFront, una red de entrega de contenido, que almacenará en caché muchas cosas para servir a la audiencia global.
