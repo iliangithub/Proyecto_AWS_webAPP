@@ -1173,3 +1173,43 @@ Una vez que todo esto esté listo, finalmente lo probaremos desde la URL.
 OK, ahora hagamos que esto suceda.
 
 Así que si has terminado de ver la introducción, únete a mí en la consola de AWS.
+
+## 8.3 Crear las pares-clave y Grupos de Seguridad.
+
+### 8.3.1 Crear las pares-clave.
+A partir de ahora, voy a poner a modo de resumen que es, y como lo hecho, no tantas capturas.
+
+Sería conveniente, crear un par-clave, para nuestra instancia "beanstalk", no es necesario imprescindible, iniciar sesión en la instancia "Beanstalk".
+
+Nos vamos a EC2 y creamos el par de clave:
+
+Name: epsilon-bean-key
+File Format: .pem
+
+y la creamos.
+
+### 8.3.2  Grupos de Seguridad.
+
+En EC2 también.
+
+Name: "epsilon-backend-SG"
+Descripción: Security Group for backend services, EPSILON
+Inbound: ssh 22, MyIP (nos da igual esta ,si la vamos a borrar solo necesitabamos crearla.)
+
+tenemos que crearla para luego editarla d enuevo y añadir otra regla, a sí mismo.
+
+Inbound (borramos la SSH y)
+Type: all trafic, source "a si mismo Security Group":
+
+Y LUEGO VAMOS A VOLVER A ÑADIRLE OTRA REGLA, (para permitir al acceso desde Beanstalk EC2 instnace ) pero primero necesitamos tener la isntancia beantstalk creada y haremos cambios en las rglas de entrada en el grupo de seguridad.
+
+## RDS
+Antes de crear el RDS, vamos a crear el "subnet group" y el "parameter group".
+
+Primero por el subnet group, esto no es obligatorio, pero cuando tenemos nuestra propia VPC podemos crear grupos de subredes, en los cuales queremos crear las instnacias RDS.
+
+Por el momento, vamos a crear el subnet group, seleccionamos la default VPC.
+Nombre: "epsilon-rds-sub-grp"
+descripción "epsilon-rds-sub-grp"
+en cuanto a Availability Zone, seleccionamos todas las zonas y en subnets, seleccionamos todas las subredes de esa misma zona y creamos.
+En esta subred, vamos a crear/correr nuestra instancia de Base de Datos.
