@@ -1060,5 +1060,114 @@ Como podemos comprobar funciona:
 
 # 8.0 Final, formas alternativas de hacerlo (PaaS y SaaS):
 
+En realidad, ya hemos terminado el proyecto "delta".
 
+Este proyecto, va a pasar de ser "delta" a ser **"epsilon"**.
 
+Ahora, vamos a volver a hacerlo pero modificando ciertas cosas. Vamos a cambiar la arquitectura de los servicios para AWS Cloud. Con la idea de mejorar la agilidad.
+
+## 8.1 Escenario:
+
+Digamos que estamos trabajando en un proyecto, en donde los servicios corren en máquinas físicas/virtuales o incluso pues en la nube, como las instancias EC2, y tenemos varios servicios, como aplicaciones web, de red, DNS, DHCP, bases de datos.
+
+Necesitaríamos pues varios equipos distintos, uno para la parte de Cloud, un equipo de virtualización, uno de monitorización, administradores de sistemas, etc.
+
+Entonces, hay muchas operaciones, y es complicado manejar, consume mucho tiempo y dinero.
+
+Para ello, podemos utilizar la plataforma Cloud, pero en vez de IaaS, usaremos PaaS y SaaS. (Platform as a Service) y (Service as a Service).
+
+Entonces, en caso de AWS, no vamos a ir con instancias corrientes, usaremos, algunos servicios de AWS y podríamos escribir como codigo nuestra infraestructura IaaC.
+
+PaaS y SaaS son felxibles y fáciles de escalar.
+
+Entonces, en vez de utilizar instancias EC2 normales para instalar nuestros servicios, utilizaremos Beanstalk.
+
+> [!TIP]
+> Elastic Beanstalk, un servicio de administración de aplicaciones en la nube que facilita el despliegue y gestión de aplicaciones web sin tener que preocuparse por la infraestructura subyacente. 
+>
+
+Beanstalk tendrá un balanceador de carga y autoescalado, almacenamiento S3 para almacenar los artefactos, además del servidor APP.
+
+En cuanto al Backend, para las base de datos, utilizaremos instancias RDS, vamos a utilizar Elastic Cache en vez de MemCached y Active MQ, en vez de RabbitMQ, el Route 53 como DNS y Cloud Front para "content delivery network".
+
+## 8.2 Objetivo:
+
+- Necesitamos una infraestructura flexible.
+- "no upfront cost", es decir, pagar por lo que usas, mientas lo usas.
+- IaaC
+- PaaS
+- SaaS
+
+Entonces, el usuario accederá a nuestra URL, que será resuelta a un punto final desde Amazon Route 53.
+
+El punto final será parte de Amazon CloudFront, una red de entrega de contenido, que almacenará en caché muchas cosas para servir a la audiencia global.
+
+Desde allí, la solicitud será redirigida al balanceador de carga de aplicaciones, que es parte de tu Elastic Beanstalk. El balanceador de carga de aplicaciones enviará la solicitud a la instancia de EC2, que está en un grupo de escalado automático. Aquí es donde estará ejecutándose nuestro servicio de aplicación Tomcat, y todo esto será parte de Elastic Beanstalk.
+
+También habrá alarmas de Amazon CloudWatch que monitorearán el grupo de escalado automático y escalarán hacia arriba o hacia abajo según sea necesario.
+
+Habrá un bucket donde se almacenarán los artefactos, y podremos desplegar nuestro artefacto más reciente simplemente haciendo clic en un botón.
+
+Por lo tanto, todo nuestro frontend será gestionado por Beanstalk. Para el backend, en lugar de RabbitMQ, estamos utilizando Amazon MQ.
+
+En lugar de usar Memcached en la instancia de EC2, estamos usando ElastiCache.
+
+Y en lugar de usar una base de datos que se ejecute en una instancia de EC2, vamos a utilizar Amazon RDS.
+
+Así que el usuario accederá a un punto final.
+
+Ese punto final será parte de Amazon CloudFront, que enviará la solicitud al balanceador de carga de aplicaciones en Beanstalk, el cual reenviará la solicitud a las instancias en el grupo de escalado automático.
+
+Todo esto será monitoreado por Amazon CloudWatch, que tendrá alarmas. Los artefactos se almacenarán en el bucket de S3.
+
+Para el backend,
+
+Accederá a Amazon MQ, ElastiCache y Amazon RDS Service.
+
+Nuevamente, te recomiendo pausar el video y observar este diseño una vez más.
+
+Veamos ahora el flujo de ejecución.
+
+Primero, obviamente iniciaremos sesión en nuestra cuenta de AWS. Crearemos un par de claves para nuestra instancia de Beanstalk, o Beanstalk lanzará una instancia de EC2, así que crearemos un par de claves, de modo que, en caso de que necesites iniciar sesión, puedas usar ese par de claves.
+
+Crearemos un grupo de seguridad para los servicios de backend: ElastiCache, RDS y ActiveMQ.
+
+Luego, crearemos RDS,
+
+ElastiCache y Amazon ActiveMQ.
+
+Después, crearemos el entorno de Elastic Beanstalk.
+
+Luego, actualizaremos nuestro grupo de seguridad del backend para permitir tráfico desde el grupo de seguridad de Beanstalk, de modo que cuando Beanstalk sea creado, también creará un grupo de seguridad para su instancia de EC2 y también para el balanceador de carga.
+
+Permitiremos tráfico desde el grupo de seguridad de la instancia de Beanstalk para acceder a nuestros servicios de backend, que están en el grupo de seguridad del backend.
+
+Estamos colocando todos nuestros servicios de backend en un grupo de seguridad, y necesitarán interactuar entre sí, por lo que también actualizaremos el grupo de seguridad del backend para permitir el tráfico interno.
+
+Para este momento, nuestros servicios de backend también estarán funcionando. RDS estará funcionando, y necesitaremos inicializar nuestra base de datos de RDS.
+
+Así que lanzaremos una instancia de EC2.
+
+Y desde allí haremos un inicio de sesión de MySQL en nuestro RDS y inicializaremos nuestra base de datos.
+
+Si seguiste nuestro proyecto anterior, sabrás que nuestra aplicación de perfil devuelve una página en /login, por lo que necesitamos cambiar la verificación de estado en Beanstalk.
+
+De modo que cuando despleguemos nuestro artefacto, debería hacer una verificación de estado en /login.
+
+Y también agregaremos un listener HTTPS en el puerto 443 a nuestro balanceador de carga elástico (ELB), que también será creado automáticamente por Beanstalk y será parte de tu entorno de Beanstalk.
+
+Después, construiremos los artefactos a partir de nuestro código fuente con la información del backend.
+
+Para este momento, deberíamos tener el punto final de RDS, el punto final de Amazon MQ y el punto final de ElastiCache. Ingresaremos esta información en nuestro archivo de propiedades de la aplicación y construiremos el artefacto.
+
+Luego desplegaremos el artefacto en el entorno de Beanstalk.
+
+Y crearemos una red de entrega de contenido utilizando Amazon CloudFront con un certificado SSL, por supuesto, para una conexión HTTPS.
+
+Una vez que tengamos esto listo, podemos actualizar nuestro balanceador de carga y el punto final en GoDaddy, o también podemos hacerlo en Amazon Route 53, en zonas DNS públicas.
+
+Una vez que todo esto esté listo, finalmente lo probaremos desde la URL.
+
+OK, ahora hagamos que esto suceda.
+
+Así que si has terminado de ver la introducción, únete a mí en la consola de AWS.
