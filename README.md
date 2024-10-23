@@ -1233,17 +1233,27 @@ Ahora, una vez creado si le damos al "parameter group", podemos ver toda las con
 
 Es un grupo de subredes en una VPC, que es una red interna virtual. (virtual private cloud).
 
-Simplemente el damos a "crear DB subnet group", nombre `epsilon-rds-rearch-subgroup`, descripción lo mismo `epsilon-rds-rearch-subgroup` y en VPC pues usamos...
+Simplemente el damos a "crear DB subnet group"
+- nombre `epsilon-rds-rearch-subgroup`
+- descripción lo mismo `epsilon-rds-rearch-subgroup` y en VPC pues usamos...
 
 
 ### 8.4.3 Crear la instancia RDS.
 
 Nos vamos al Dashboard y la creamos.
-Seleccionamos `standard create`, Engine Options `MySQL`.
-Engine version: `MySQL 8.0.39`. Templates `utlizamos la Free Tier`.
-En Settings, DB instance identifier: `epsilon-rds-rearch`, username `admin`, coredentials management `self managed` y marcamos auto generate password.
+- Seleccionamos `standard create`
+- Engine Options `MySQL`.
+- Engine version: `MySQL 8.0.39`.
+- Templates `utlizamos la Free Tier`.
+En Settings,
+- DB instance identifier: `epsilon-rds-rearch`
+- username `admin`
+- coredentials management `self managed`
+y marcamos auto generate password.
 
-Instance configuration `db.t4g-micro`, en storage: `general purpose SSD (gp3)` y `20 GB`, en storage autoscaling **DESMARCAMOS "ENABLE STORAGE AUTOSCALING"**.
+- Instance configuration `db.t4g-micro`
+- en storage: `general purpose SSD (gp3)` y `20 GB`
+- en storage autoscaling **DESMARCAMOS "ENABLE STORAGE AUTOSCALING"**.
 
 En conectivity, la "default VPC". y la subnet group la `epsilon-rds-rearch-subgrp`, public access "No", VPC security Group (firewall), choose existing, y seleccionamos el VPC security group `epsilon-rearch-backend-sg`, availability zone `no preference`
 el monitoring deshabilitado.
@@ -1307,9 +1317,11 @@ Lo mismo, buscamos en la barra de navegación "Amazon MQ", le damos a "Get Start
 - Broker instance type: `mq.t3.micro`
 - Username:rabbit Password:BlueBunny98
 
-Aditional Settings. Broker engine version: 3.13... Monitoring deshabilitado (recordemos que esto en la vida real pues debería de ser así).
-Access type: private access.
-Security group: `epsilon-rearch-backend-sg`
+Aditional Settings. 
+-Broker engine version: 3.13... 
+-Monitoring deshabilitado (recordemos que esto en la vida real pues debería de ser así).
+- Access type: private access.
+- Security group: `epsilon-rearch-backend-sg`
 
 y lo creamos.
 
@@ -1319,3 +1331,5 @@ Nos falta solamente, como tenemos la BD creada, nos falta coger el esquema de la
 Para ello, podemos hacer DOS cosas:
 Hacerlo desde el MySQL Workbench CE:
 ![image](https://github.com/user-attachments/assets/192ddc06-1b10-4bed-a876-0f2b8f8cf991)
+o también podemos pues crear una instancia EC2, descargar MySQL y utilizarlo para importar la BD.
+
