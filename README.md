@@ -1203,7 +1203,7 @@ Type: all trafic, source "a si mismo Security Group":
 
 Y LUEGO VAMOS A VOLVER A ÑADIRLE OTRA REGLA, (para permitir al acceso desde Beanstalk EC2 instnace ) pero primero necesitamos tener la isntancia beantstalk creada y haremos cambios en las rglas de entrada en el grupo de seguridad.
 
-## RDS
+## 8.4 RDS
 Antes de crear el RDS, vamos a crear el "subnet group" y el "parameter group".
 
 Primero por el subnet group, esto no es obligatorio, pero cuando tenemos nuestra propia VPC podemos crear grupos de subredes, en los cuales queremos crear las instnacias RDS.
@@ -1213,3 +1213,90 @@ Nombre: "epsilon-rds-sub-grp"
 descripción "epsilon-rds-sub-grp"
 en cuanto a Availability Zone, seleccionamos todas las zonas y en subnets, seleccionamos todas las subredes de esa misma zona y creamos.
 En esta subred, vamos a crear/correr nuestra instancia de Base de Datos.
+
+### 8.4.1 RDS creación.
+
+Nos vamos a la barra de navegación y buscamos RDS.
+RDS no te proporciona ningún acceso del estilo SSH, donde entramos y configuramos. Si queremso cambiar los parámetros de nuestra Base de datos, hay un concepto llamado "parameter group".
+
+Podemos crear ese "Parameter group" mientras creamos la instancia RDS, seleccionamos el grupo y cuando queramos pues hacemos cambios ala configuración del "parameter group" y se verá reflejado pues en la instancia RDS.
+
+En el DashBoard, tenemos la opción de crearlo, a la izquierda del todo aparece y también pues en el dashboard.
+
+![image](https://github.com/user-attachments/assets/98ed9cf6-eef2-4e67-b779-fd8986283851)
+
+Así que lo creamos, lo llamaremos `epsilon-rds-rearch-parametergrp`, la descripción pondremos lo mismo `epsilon-rds-rearch-parametergrp`, engine type, utilizaremos `mysql community`, luego en parameter group family: `mysql8.0` y en type, `DB Parameter Group`.
+
+Ahora, una vez creado si le damos al "parameter group", podemos ver toda las configuraciones que tiene y podemos cambiar.
+
+### 8.4.2 Subnet Group Creación.
+
+Es un grupo de subredes en una VPC, que es una red interna virtual. (virtual private cloud).
+
+Simplemente el damos a "crear DB subnet group", nombre `epsilon-rds-rearch-subgroup`, descripción lo mismo `epsilon-rds-rearch-subgroup` y en VPC pues usamos...
+
+
+### 8.4.3 Crear la instancia RDS.
+
+Nos vamos al Dashboard y la creamos.
+Seleccionamos `standard create`, Engine Options `MySQL`.
+Engine version: `MySQL 8.0.39`. Templates `utlizamos la Free Tier`.
+En Settings, DB instance identifier: `epsilon-rds-rearch`, username `admin`, coredentials management `self managed` y marcamos auto generate password.
+
+Instance configuration `db.t4g-micro`, en storage: `general purpose SSD (gp3)` y `20 GB`, en storage autoscaling **DESMARCAMOS "ENABLE STORAGE AUTOSCALING"**.
+
+En conectivity, la "default VPC". y la subnet group la `epsilon-rds-rearch-subgrp`, public access "No", VPC security Group (firewall), choose existing, y seleccionamos el VPC security group `epsilon-rearch-backend-sg`, availability zone `no preference`
+el monitoring deshabilitado.
+
+Y por último, en "Additional configuration", le damos el nombre de la BD `accounts`.
+DB parameter group `epsilon-rds-rearch-paragroup`. **Backup deshabilitado**, encryption habilitado, (Log exports, debería de estar habilitado, pero como no hemos habilitado el monitoring pues tenemos que dejarlo también deshabilitado, pues no nos sirve, básicamente va a los logs de CloudWatch).
+
+Y lo creamos.
+
+>[!IMPORTANT]
+>Nos aparecerá un PopUp, diciendo de crear un ElasiCache CLuster o un RDS Proxy, vamos a cerrarlo.
+>
+>Arriba del todo nos aparecerá "VIEW CREDENTIALS DETAILS", pue shemos generado una contraseña del usuario de la Base de Datos, la necesitamos pues guardar/copiar.
+>
+
+>[!IMPORTANT]
+> En caso de haber perdido la contraseña, seleccionamos la BD y le damos a "Modify" y así generamos una nueva, pero claro, no podemos pues recuperar la antigua.
+>
+
+## 8.5 ElasticCache.
+
+Como antes, lo buscamos en la barra de búsqueda, y tenemos que crear primero un "parameter group".
+
+### 8.5.1 Parameter Group, creación.
+
+- Nombre: `epsilon-rearch-cache-paragrp`
+- Descripción: `epsilon-rearch-cache paragrp`
+- Family: `memcached1.6`
+
+Y lo creamos.
+
+### 8.5.2 Subnet Group, creación.
+
+- Nombre: `epsilon-rearch-cache-subgrp`
+- Descripción: `epsilon-rearch-cache-subgrp`
+- VPC ID: `la por defecto`
+
+Y lo creamos.
+
+### 8.5.3 ElastiCache, creación.
+Ahora, nos volvemos al Dashboard y "create cache", create memcached cache.
+
+- Design your own cache
+- Standard create
+- Cluster info, name: `epsilon-rearch-cache`, description: `epsilon-rearch-cache`.
+- Cluster settings, Engine version: `1.6.22`, port: `11211`, parametergroup: `epsilon-reach-cache-paragrp`, node type: `cache.t2.micro`, number of nodes: 1
+- Subnet group settings, subnet groups: `epsilon-rearch-cache-subgrp`, availability zone "None preference".
+
+Le damos a siguiente y llegamos a Advanced Settings:
+
+- Security Group: `epsilon-rearch-backend-sg`
+- Maintenance: No preference.
+
+Y lo creamos.
+
+## 8.6 Amazon MQ.
