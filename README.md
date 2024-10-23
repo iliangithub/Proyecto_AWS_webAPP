@@ -1300,3 +1300,18 @@ Le damos a siguiente y llegamos a Advanced Settings:
 Y lo creamos.
 
 ## 8.6 Amazon MQ.
+Lo mismo, buscamos en la barra de navegación "Amazon MQ", le damos a "Get Started".
+- Broker engine: Rabbit MQ
+- Deployment Mode: Simple-instance broker
+- Broker Name: `epsilon-rearch-rabbitmq`
+- Broker instance type: `mq.t3.micro`
+- Username:rabbit Password:BlueBunny98
+
+Aditional Settings. Broker engine version: 3.13... Monitoring deshabilitado (recordemos que esto en la vida real pues debería de ser así).
+Access type: private access.
+Security group: `epsilon-rearch-backend-sg`
+
+y lo creamos.
+
+## 8.7 Inicializar la BD.
+Nos falta solamente, como tenemos la BD creada, coger el esquema de la BD y aplicarlo en nuestra instancia RDS.
