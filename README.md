@@ -1314,4 +1314,8 @@ Security group: `epsilon-rearch-backend-sg`
 y lo creamos.
 
 ## 8.7 Inicializar la BD.
-Nos falta solamente, como tenemos la BD creada, coger el esquema de la BD y aplicarlo en nuestra instancia RDS.
+Nos falta solamente, como tenemos la BD creada, nos falta coger el esquema de la BD y aplicarlo en nuestra instancia RDS.
+
+Para ello, podemos hacer DOS cosas:
+Hacerlo desde el MySQL Workbench CE:
+![image](https://github.com/user-attachments/assets/192ddc06-1b10-4bed-a876-0f2b8f8cf991)
