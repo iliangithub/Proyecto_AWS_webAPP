@@ -1176,32 +1176,38 @@ Así que si has terminado de ver la introducción, únete a mí en la consola de
 
 ## 8.3 Crear las pares-clave y Grupos de Seguridad.
 
-### 8.3.1 Crear las pares-clave.
-A partir de ahora, voy a poner a modo de resumen que es, y como lo hecho, no tantas capturas.
+A partir de ahora, voy a poner a modo de resumen; qué es, y cómo lo hecho, sin tantas capturas.
+
+### 8.3.1  Grupos de Seguridad.
+
+En EC2 también.
+
+- Name: `epsilon-rearch-backend-SG`
+- Descripción: `epsilon-rearch-backend-SG`
+- Inbound: NADA
+
+Y LUEGO VAMOS A VOLVER A AÑADIRLE OTRA REGLA, (para permitir al acceso desde Beanstalk EC2 instance )
+
+Inbound Rule.
+- Type: All traffic
+- Source: Custom, `epsilon-rearch-backend-SG`
+- Description: `Allow all traffic internally`
+
+> [!IMPORTANT]
+> Luego, cuando creemos el "Beanstalk" volveremos a editarlo también.
+> Para añadirle otra regla.
+>
+
+### 8.3.2 Crear las pares-clave.
 
 Sería conveniente, crear un par-clave, para nuestra instancia "beanstalk", no es necesario imprescindible, iniciar sesión en la instancia "Beanstalk".
 
 Nos vamos a EC2 y creamos el par de clave:
 
-Name: epsilon-bean-key
-File Format: .pem
+- Name: `epsilon-bean-key`
+- File Format: .pem
 
-y la creamos.
-
-### 8.3.2  Grupos de Seguridad.
-
-En EC2 también.
-
-Name: "epsilon-backend-SG"
-Descripción: Security Group for backend services, EPSILON
-Inbound: ssh 22, MyIP (nos da igual esta ,si la vamos a borrar solo necesitabamos crearla.)
-
-tenemos que crearla para luego editarla d enuevo y añadir otra regla, a sí mismo.
-
-Inbound (borramos la SSH y)
-Type: all trafic, source "a si mismo Security Group":
-
-Y LUEGO VAMOS A VOLVER A ÑADIRLE OTRA REGLA, (para permitir al acceso desde Beanstalk EC2 instnace ) pero primero necesitamos tener la isntancia beantstalk creada y haremos cambios en las rglas de entrada en el grupo de seguridad.
+y la creamos. ![image](https://github.com/user-attachments/assets/3e9e16f8-f93e-4bc5-bff2-2fb19c2cd9c0)
 
 ## 8.4 RDS
 Antes de crear el RDS, vamos a crear el "subnet group" y el "parameter group".
