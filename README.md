@@ -1220,14 +1220,17 @@ Vamos a la barra de búsqueda y buscamos RDS. Podríamos directante crear nuestr
 
 **No lo vamos a hacer. En la realidad, habrá situaciones en las que tenemos que cambiar algún parámetro de nuestra Base de Datos, RDS no te proporciona ningún acceso del estilo SSH, donde entramos y configuramos. Si queremos cambiar los parámetros de nuestra Base de datos, hay un concepto llamado "parameter group" en RDS.**
 
-Entonces, vamos a crear el "parameter group", para así cuando lo seleccionemos, cuando queramos, podamos hacer cambios a la Base de Datos.
+Entonces, vamos a crear el "parameter group", para así cuando lo seleccionemos, cuando queramos, podamos hacer cambios a la Base de Datos y se verá reflejado pues en la instancia RDS..
 Antes de crear el RDS, vamos a crear el :
 - parameter group.
 - subnet group.
 
-## 8.4.1 Creación Parameter Group.
+### 8.4.1 Creación Parameter Group.
 
 En el Dashboard, buscamos "Parameter Group" y le damos a "create".
+
+![image](https://github.com/user-attachments/assets/98ed9cf6-eef2-4e67-b779-fd8986283851)
+
 - Parameter Group Name: `epsilon-rds-parametgrp`
 - Description: `epsilon-rds-parametgrp`
 - Engine Type: `MySQL Community.`
@@ -1236,41 +1239,35 @@ En el Dashboard, buscamos "Parameter Group" y le damos a "create".
 
 Y lo creamos. Si le damos al parameter group, podemos ver todo lo que podemos modificar.
 
-## 8.4.2 Creación Subnet Group.
+### 8.4.2 Creación Subnet Group.
 
-Primero por el subnet group, esto no es obligatorio, pero cuando tenemos nuestra propia VPC podemos crear grupos de subredes, en los cuales queremos crear las instnacias RDS.
+Ahora es turno de los "subnet group". Es un grupo de subredes en una VPC (Virtual Private Cloud). Básicamente, es una red que está divida en otras redes más pequeñas llamadas pues subredes.
 
-Por el momento, vamos a crear el subnet group, seleccionamos la default VPC.
-Nombre: "epsilon-rds-sub-grp"
-descripción "epsilon-rds-sub-grp"
-en cuanto a Availability Zone, seleccionamos todas las zonas y en subnets, seleccionamos todas las subredes de esa misma zona y creamos.
-En esta subred, vamos a crear/correr nuestra instancia de Base de Datos.
+Cuando lancemos nuestra instancia RDS tenemos que seleccionar el "subnet group".
 
-### 8.4.1 RDS creación.
+>[!TIP]
+>Cuando seleccionamos diferentes subredes en casos de producción, necesitamos crear pues nuestra propia, VPC en un "subnetgroup" para el RDS y seleccionamos pues esas subredes a la hora de lanzar la instancia RDS.
+>
 
-Nos vamos a la barra de navegación y buscamos RDS.
-RDS no te proporciona ningún acceso del estilo SSH, donde entramos y configuramos. Si queremso cambiar los parámetros de nuestra Base de datos, hay un concepto llamado "parameter group".
+Vamos a crear el subnet group.
+Create DB subnet group:
+- Nombre: `epsilon-rds-rearch-subgrp`
+- Descripción: `epsilon-rds-rearch-subgrp`
+- VPC: `aquí pues seleccionamos la VPC que hayamos creado, pero en nuestro caso, la default.`
 
-Podemos crear ese "Parameter group" mientras creamos la instancia RDS, seleccionamos el grupo y cuando queramos pues hacemos cambios ala configuración del "parameter group" y se verá reflejado pues en la instancia RDS.
+Add Subnets:
+- Availability Zone: Seleccionamos todas las zonas `us-east1a ; us-east1b ; ... us-east-1f`
+- Subnets, seleccionamos todas las subredes de cada zona `us-east-1a --> subnet-055a1... ; us-east-1f --> subnet-01ed...`
 
-En el DashBoard, tenemos la opción de crearlo, a la izquierda del todo aparece y también pues en el dashboard.
+Algunas zonas pueden tener varias "subnets".
 
-![image](https://github.com/user-attachments/assets/98ed9cf6-eef2-4e67-b779-fd8986283851)
+>[!TIP]
+>En algunos casos de producción, la gente crea una "subnet" diferente para la Base de datos. Y entonces, puedes seleccionar esas subredes (las de antes), y llamarlo "subnet group". Se hacer por motivos de seguridad y tener más control sobre la Base de datos.
+>
 
-Así que lo creamos, lo llamaremos `epsilon-rds-rearch-parametergrp`, la descripción pondremos lo mismo `epsilon-rds-rearch-parametergrp`, engine type, utilizaremos `mysql community`, luego en parameter group family: `mysql8.0` y en type, `DB Parameter Group`.
+Y creamos. En esta subred, vamos a crear/correr nuestra instancia de Base de Datos.
 
-Ahora, una vez creado si le damos al "parameter group", podemos ver toda las configuraciones que tiene y podemos cambiar.
-
-### 8.4.2 Subnet Group Creación.
-
-Es un grupo de subredes en una VPC, que es una red interna virtual. (virtual private cloud).
-
-Simplemente el damos a "crear DB subnet group"
-- nombre `epsilon-rds-rearch-subgroup`
-- descripción lo mismo `epsilon-rds-rearch-subgroup` y en VPC pues usamos...
-
-
-### 8.4.3 Crear la instancia RDS.
+### 8.4.3 RDS creación de la instancia.
 
 Nos vamos al Dashboard y la creamos.
 - Seleccionamos `standard create`
@@ -1296,7 +1293,7 @@ DB parameter group `epsilon-rds-rearch-paragroup`. **Backup deshabilitado**, enc
 Y lo creamos.
 
 >[!IMPORTANT]
->Nos aparecerá un PopUp, diciendo de crear un ElasiCache CLuster o un RDS Proxy, vamos a cerrarlo.
+>Nos aparecerá un PopUp, diciendo de crear un ElastiCache CLuster o un RDS Proxy, vamos a cerrarlo.
 >
 >Arriba del todo nos aparecerá "VIEW CREDENTIALS DETAILS", pue shemos generado una contraseña del usuario de la Base de Datos, la necesitamos pues guardar/copiar.
 >
@@ -1305,7 +1302,7 @@ Y lo creamos.
 > En caso de haber perdido la contraseña, seleccionamos la BD y le damos a "Modify" y así generamos una nueva, pero claro, no podemos pues recuperar la antigua.
 >
 
-## 8.5 ElasticCache.
+## 8.5 ElastiCache.
 
 Como antes, lo buscamos en la barra de búsqueda, y tenemos que crear primero un "parameter group".
 
