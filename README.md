@@ -1066,7 +1066,7 @@ Este proyecto, va a pasar de ser "delta" a ser **"epsilon"**.
 
 Ahora, vamos a volver a hacerlo pero modificando ciertas cosas. Vamos a cambiar la arquitectura de los servicios para AWS Cloud. Con la idea de mejorar la agilidad.
 
-## 8.1 Escenario:
+## 8.1 Escenario, nuevo proyecto "epsilon":
 
 Digamos que estamos trabajando en un proyecto, en donde los servicios corren en máquinas físicas/virtuales o incluso pues en la nube, como las instancias EC2, y tenemos varios servicios, como aplicaciones web, de red, DNS, DHCP, bases de datos.
 
