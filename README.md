@@ -1336,15 +1336,24 @@ Y lo creamos.
 >Nos aparecerá un PopUp, diciendo de crear un ElastiCache CLuster o un RDS Proxy, vamos a cerrarlo.
 >
 >Arriba del todo nos aparecerá "VIEW CREDENTIALS DETAILS", pue shemos generado una contraseña del usuario de la Base de Datos, la necesitamos pues guardar/copiar.
->
+>```
+>eJmCwVwQjYRY22wRtftv
+>```
+>luego borraré la cuenta.
 
 >[!IMPORTANT]
 > En caso de haber perdido la contraseña, seleccionamos la BD y le damos a "Modify" y así generamos una nueva, pero claro, no podemos pues recuperar la antigua.
 >
 
+![image](https://github.com/user-attachments/assets/fc8504e6-55f1-47bf-aa47-ef25979215af)
+
 ## 8.5 ElastiCache.
 
-Como antes, lo buscamos en la barra de búsqueda, y tenemos que crear primero un "parameter group".
+Como antes, lo buscamos en la barra de búsqueda.
+
+Y la creación del ElastiCache, es muy similar al RDS. Tenemos que crear:
+- parameter group.
+- subnetgroup.
 
 ### 8.5.1 Parameter Group, creación.
 
@@ -1360,19 +1369,38 @@ Y lo creamos.
 - Descripción: `epsilon-rearch-cache-subgrp`
 - VPC ID: `la por defecto`
 
-Y lo creamos.
+Todas las subnets están seleccionadas. Lo creamos.
 
 ### 8.5.3 ElastiCache, creación.
 Ahora, nos volvemos al Dashboard y "create cache", create memcached cache.
 
+![image](https://github.com/user-attachments/assets/543038cc-34e1-4160-8bc9-1c71c42f9d6a)
+
 - Design your own cache
 - Standard create
-- Cluster info, name: `epsilon-rearch-cache`, description: `epsilon-rearch-cache`.
-- Cluster settings, Engine version: `1.6.22`, port: `11211`, parametergroup: `epsilon-reach-cache-paragrp`, node type: `cache.t2.micro`, number of nodes: 1
-- Subnet group settings, subnet groups: `epsilon-rearch-cache-subgrp`, availability zone "None preference".
+
+Ubicación
+- AWS cloud.
+
+Información del clúster:
+- Name: `epsilon-rearch-cache`
+- Description: `epsilon-rearch-cache`.
+
+Cluster settings 
+- Engine version: `1.6.22`
+- port: `11211`
+- parameter group: `epsilon-reach-cache-paragrp`
+- node type: `cache.t2.micro`
+- number of nodes: 1
+
+Subnet group settings, (elija un grupo de subredes existente).
+- subnet groups: `epsilon-rearch-cache-subgrp`
+
+Ubicación de zonas de disponibilidad:
+- availability zone: "None preference".
 
 Le damos a siguiente y llegamos a Advanced Settings:
-
+Segurity, (LE DAMOS A MANAGE/ADMINISTRAR):
 - Security Group: `epsilon-rearch-backend-sg`
 - Maintenance: No preference.
 
@@ -1382,19 +1410,36 @@ Y lo creamos.
 Lo mismo, buscamos en la barra de navegación "Amazon MQ", le damos a "Get Started".
 - Broker engine: Rabbit MQ
 - Deployment Mode: Simple-instance broker
+
+Detalles:
 - Broker Name: `epsilon-rearch-rabbitmq`
 - Broker instance type: `mq.t3.micro`
-- Username:rabbit Password:BlueBunny98
 
-Aditional Settings. 
--Broker engine version: 3.13... 
--Monitoring deshabilitado (recordemos que esto en la vida real pues debería de ser así).
+Acceso a RabbitMQ:
+- Username: `rabbit`
+- Password: `BlueBunny983`
+
+DESPLEGAMOS Additional Settings. 
+- Broker engine version: 3.13
+
+Configuración de agentes
+- Crear una configuración nueva con los valores predeterminados
+
+Monitoreo.
+- CloudWatch **deshabilitado** (recordemos que esto en la vida real pues debería de ser así).
+
+Redes y seguridad.
 - Access type: private access.
-- Security group: `epsilon-rearch-backend-sg`
 
-y lo creamos.
+Grupos de seguridad:
+- Seleccionar grupos de seguridad existentes: `epsilon-rearch-backend-sg`
+
+Lo creamos.
+
+![image](https://github.com/user-attachments/assets/318ba244-b84f-4f45-bd5a-1d41322f03a9)
 
 ## 8.7 Inicializar la BD.
+### 8.7.1 Crear la instancia.
 Nos falta solamente, como tenemos la BD creada, nos falta coger el esquema de la BD y aplicarlo en nuestra instancia RDS.
 
 Para ello, podemos hacer DOS cosas:
@@ -1403,4 +1448,74 @@ Hacerlo desde el MySQL Workbench CE:
 ![image](https://github.com/user-attachments/assets/192ddc06-1b10-4bed-a876-0f2b8f8cf991)
 
 o también podemos pues crear una instancia EC2, descargar MySQL y utilizarlo para importar la BD.
+Vamos a hacerlo de esa forma.
 
+Voy al buscador de arriba y escribo EC2 y creo una instancia:
+(NO HAY QUE HACER UNA INSTANCIA CURRADA, LA VAMOS A BORRAR, LA CREAMOS SOLO PARA USAR LOS COMANDOS SQL)
+
+Name: `mysqli_cliente`
+AMI: `Ubuntu`
+Key-pair: `el que creamos antes del bean`
+
+![image](https://github.com/user-attachments/assets/c739db1f-8810-4c9a-8b46-2e550fec87ad)
+
+![image](https://github.com/user-attachments/assets/a3b3e019-7a00-4bca-aa9a-51bc6c34c123)
+
+la creamos, no tocamos nada más.
+
+### 8.7.2 Modificar el grupo de seguridad.
+
+Ahora, necesitamos dos cosas:
+- Los datos de la Base de datos RDS endpoint, el usuario y contraseña. Entonces, la información del RDS.
+- Permitir que el grupo de seguridad de esta insancia permita, comunicarse con el grupo de seguridad del RDS.
+
+Aunque esté corriendo, vamos a copiar el ID del `mysql-client-sg`:
+
+![image](https://github.com/user-attachments/assets/523d073b-3f89-4f10-8678-85196ee4e962)
+
+vamos al backend-sg y creamos una regla de entrada:
+
+MySQL /Aurora ; Custom ; sg-082ba0c0d241bf36b
+
+Habilitado desde el origen pues del cliente MySQL, para eso hemos copiado el ID.
+
+### 8.7.3 YA TENEMOS LOS DATOS RDS, DEL USER Y PASS... Vamos a conectarnos e inicializarla.
+
+Nos conectamos por ssh, IP pública + clave:
+
+```
+ssh -i "epsilon-bean-key.pem" ubuntu@ec2-54-157-166-106.compute-1.amazonaws.com
+```
+
+```
+sudo -i
+```
+
+```
+apt update && apt install mysql-client git -y
+```
+
+```
+git clone https://github.com/hkhcoder/vprofile-project.git
+```
+Y lo tienes descargado en el directorio en el que te encuentres.
+
+Hacemos un cd.
+
+```
+cd vprofile-project/
+```
+
+```
+git checkout awsrefactor
+```
+
+Necesitamos saber cual es el ID o el enlace para el RDS:
+
+![image](https://github.com/user-attachments/assets/cc911f0d-6013-467d-b705-be15afc22d44)
+
+```
+mysql -h epsilon-rds-rearch.crmqiuq428z2.us-east-1.rds.amazonaws.com -u admin -peJmCwVwQjYRY22wRtftv accounts < src/main/resources/db_backup.sql
+```
+
+La constraseña viene en el apartado 8.4.3 al final del todo.
