@@ -1519,3 +1519,14 @@ mysql -h epsilon-rds-rearch.crmqiuq428z2.us-east-1.rds.amazonaws.com -u admin -p
 ```
 
 La constraseña viene en el apartado 8.4.3 al final del todo.
+
+Si hacemos un `SHOW tables;`
+
+![image](https://github.com/user-attachments/assets/492cb849-3b43-4ef9-afb6-a49a5003455a)
+
+Si nos da este resultado, vamos a eliminar pues la instancia.
+Todo esto lo hacemos, solo porque la base de datos RDS es privada, y necesitamos pues estar en la misma red.
+
+## 8.8 Amazon Elastic Beanstalk.
+
+
