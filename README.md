@@ -1182,6 +1182,10 @@ A partir de ahora, voy a poner a modo de resumen; qué es, y cómo lo hecho, sin
 
 En EC2 también.
 
+> [!IMPORTANT]
+> Si por casualidad, hemos borrado todos los grupos de seguridad, incluso el "default", para crearlo de nuevo, simplemente en acciones le damos a "crear grupo por defecto".
+> 
+
 - Name: `epsilon-rearch-backend-SG`
 - Descripción: `epsilon-rearch-backend-SG`
 - Inbound: NADA
