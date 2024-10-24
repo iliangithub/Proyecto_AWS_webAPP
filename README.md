@@ -1318,6 +1318,14 @@ Copia de seguridad:
 - **Backup deshabilitado**
 - encryption `habilitado`
 
+Mantenimiento:
+
+- Habilitar actualización automática de versiones secundarias (**habilitado**).
+- Periodo de mantenimiento: **Sin preferencia**
+  
+Protección contra eliminación
+- Habilitar la protección contra la eliminación (**DESHABILITADO**)
+
 > [!TIP]
 >(Log exports, debería de estar habilitado, pero como no hemos habilitado el monitoring pues tenemos que dejarlo también deshabilitado, pues no nos sirve, básicamente va a los logs de CloudWatch).
 >
