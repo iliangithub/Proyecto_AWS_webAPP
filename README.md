@@ -1336,6 +1336,8 @@ Nos falta solamente, como tenemos la BD creada, nos falta coger el esquema de la
 
 Para ello, podemos hacer DOS cosas:
 Hacerlo desde el MySQL Workbench CE:
+
 ![image](https://github.com/user-attachments/assets/192ddc06-1b10-4bed-a876-0f2b8f8cf991)
+
 o también podemos pues crear una instancia EC2, descargar MySQL y utilizarlo para importar la BD.
 
