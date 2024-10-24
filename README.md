@@ -1270,25 +1270,57 @@ Y creamos. En esta subred, vamos a crear/correr nuestra instancia de Base de Dat
 ### 8.4.3 RDS creación de la instancia.
 
 Nos vamos al Dashboard y la creamos.
+
+Crear base de datos.
+
+Elegir un método de creación de base de datos:
 - Seleccionamos `standard create`
-- Engine Options `MySQL`.
+
+Opciones del motor:
+- Tipo de motor: `MySQL`.
+- Edición: Comunidad de MySQL (seleccionado, no puedes cambiarlo)
+- `Mostrar solo versiones compatibles con las escrituras optimizadas de Amazon RDS` y `Mostrar solo las versiones compatibles con el clúster de base de datos multi-AZ` **deshabilitados**.
 - Engine version: `MySQL 8.0.39`.
-- Templates `utlizamos la Free Tier`.
-En Settings,
+- `Enable RDS extended support` **deshabilitado**
+
+Templates:
+- Templates: `Free Tier`.
+
+Nos saltamos "Availability and Durability" y en Settings:
 - DB instance identifier: `epsilon-rds-rearch`
-- username `admin`
-- coredentials management `self managed`
-y marcamos auto generate password.
+- username: `admin`
+- Credentials management: `self managed`
+- **Marcamos** auto generate password.
 
-- Instance configuration `db.t4g-micro`
-- en storage: `general purpose SSD (gp3)` y `20 GB`
-- en storage autoscaling **DESMARCAMOS "ENABLE STORAGE AUTOSCALING"**.
+Instance configuration:
+- DB instance class: `Show instance classes that support Amazon RDS Optimized Writes` y `Include previous generation classes`, **deshabilitado**; `db.t4g-micro`
+  
+En storage: 
+- storage type: `general purpose SSD (gp3)` y `20 GB`
+- **DESPLEGAMOS EL:** Escalado automático de almacenamiento **DESMARCAMOS "ENABLE STORAGE AUTOSCALING"**.
 
-En conectivity, la "default VPC". y la subnet group la `epsilon-rds-rearch-subgrp`, public access "No", VPC security Group (firewall), choose existing, y seleccionamos el VPC security group `epsilon-rearch-backend-sg`, availability zone `no preference`
-el monitoring deshabilitado.
+En conectivity:
+- No se conecte a un recurso informático EC2.
+- Nube privada virtual (VPC): `La default`.
+- DB subnet group: `epsilon-rds-rearch-subgrp`.
+- public access "No".
+- VPC security Group (firewall): `choose existing`
+- Existing VPC security groups: `epsilon-rearch-backend-sg` **y quitamos la default.**
+- Availability zone `no preference`
 
-Y por último, en "Additional configuration", le damos el nombre de la BD `accounts`.
-DB parameter group `epsilon-rds-rearch-paragroup`. **Backup deshabilitado**, encryption habilitado, (Log exports, debería de estar habilitado, pero como no hemos habilitado el monitoring pues tenemos que dejarlo también deshabilitado, pues no nos sirve, básicamente va a los logs de CloudWatch).
+El monitoring/supervisión deshabilitado.
+
+Y por último, en "Additional configuration"
+Initial database name: `accounts`.
+DB parameter group: `epsilon-rds-parametgrp`
+
+Copia de seguridad:
+- **Backup deshabilitado**
+- encryption `habilitado`
+
+> [!TIP]
+>(Log exports, debería de estar habilitado, pero como no hemos habilitado el monitoring pues tenemos que dejarlo también deshabilitado, pues no nos sirve, básicamente va a los logs de CloudWatch).
+>
 
 Y lo creamos.
 
