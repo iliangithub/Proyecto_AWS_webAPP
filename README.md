@@ -1214,7 +1214,29 @@ Nos vamos a EC2 y creamos el par de clave:
 y la creamos. ![image](https://github.com/user-attachments/assets/3e9e16f8-f93e-4bc5-bff2-2fb19c2cd9c0)
 
 ## 8.4 RDS
-Antes de crear el RDS, vamos a crear el "subnet group" y el "parameter group".
+Vamos a la barra de búsqueda y buscamos RDS. Podríamos directante crear nuestra instancia DB, en el apartado del dashboard, "DB instances".
+
+![image](https://github.com/user-attachments/assets/2238182a-bb68-4d20-8c53-ccd487595d36)
+
+**No lo vamos a hacer. En la realidad, habrá situaciones en las que tenemos que cambiar algún parámetro de nuestra Base de Datos, RDS no te proporciona ningún acceso del estilo SSH, donde entramos y configuramos. Si queremos cambiar los parámetros de nuestra Base de datos, hay un concepto llamado "parameter group" en RDS.**
+
+Entonces, vamos a crear el "parameter group", para así cuando lo seleccionemos, cuando queramos, podamos hacer cambios a la Base de Datos.
+Antes de crear el RDS, vamos a crear el :
+- parameter group.
+- subnet group.
+
+## 8.4.1 Creación Parameter Group.
+
+En el Dashboard, buscamos "Parameter Group" y le damos a "create".
+- Parameter Group Name: `epsilon-rds-parametgrp`
+- Description: `epsilon-rds-parametgrp`
+- Engine Type: `MySQL Community.`
+- Parameter Group Family: `MySQL8.0`
+- Type: `DB Parameter Group`
+
+Y lo creamos. Si le damos al parameter group, podemos ver todo lo que podemos modificar.
+
+## 8.4.2 Creación Subnet Group.
 
 Primero por el subnet group, esto no es obligatorio, pero cuando tenemos nuestra propia VPC podemos crear grupos de subredes, en los cuales queremos crear las instnacias RDS.
 
