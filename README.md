@@ -1065,3 +1065,7 @@ En realidad, ya hemos terminado el proyecto "delta".
 Este proyecto, va a pasar de ser "delta" a ser **"epsilon"**.
 
 Ahora, vamos a volver a hacerlo pero modificando ciertas cosas. Vamos a cambiar la arquitectura de los servicios para AWS Cloud. Con la idea de mejorar la agilidad.
+
+voy a hacerlo en este repositorio:
+
+https://github.com/iliangithub/Proyecto_AWS_webAPP_PaaS-SaaS
