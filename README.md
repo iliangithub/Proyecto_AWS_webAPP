@@ -1529,4 +1529,91 @@ Todo esto lo hacemos, solo porque la base de datos RDS es privada, y necesitamos
 
 ## 8.8 Amazon Elastic Beanstalk.
 
+Vamos a recordar por un momento en "delta", cuando teníamos la instancia TomCat.
+- Creamos el grupo de seguridad y las par-claves.
+- Lanzamos la instancia e instalamos TomCat.
+- Creamos un "Target group", load balancer y todo bien, una AMI... etc, etc...
 
+Entonces, **Cuando creamos un "beanstalk enviroment", seleccionamos TomCat y pues nos proporciona todo lo anterior. Un Autoscaling group, AMI, S3 bucket for the artifact, CloudWatch monitoring Logs, y es muy fácil cambiar los ajustes cuando quieras y el despliegue es muy fácil.
+
+Lo primero es crear roles IAM.
+
+### 8.8.1 IAM, crear rol.
+
+- Tipo de entidad de confianza: `servicio de AWS`.
+- Servicio o caso de uso: `EC2`
+- Caso de uso: `EC2`
+
+Agregar permisos:
+- AdministratorAccess-AWSElasticBeanstalk
+- AWSElasticBeanstalkCustomPlatformforEC2Role
+- AWSElasticBeanstalkRoleSNS
+- AWSElasticBeanstalkWebTier
+
+- Name: `epsilon-rearch-beanstalk-role`
+- Description: `epsilon-rearch-beanstalk-role`
+
+### 8.8.2 Beanstalk, creación.
+
+Le damos a create application.
+
+- Nivel de entorno: Entorno de servidor web
+
+Información de la aplicación:
+- Nombre: `epsilon-rearch-beanapp`
+
+Información del entorno:
+- Nombre del entorno: `Epsilon-rearch-beanapp-prod`
+- Dominio: `epsilonrearch` (tiene que ser único)
+
+Tipo de plataforma
+- Plataforma administrada
+- Plataforma: TomCat
+- Ramificación de la plataforma: Tomcat 10 with Correto 21 running...
+- Versión: 5.3.3
+
+Código de aplicación
+- Aplicación de ejemplo
+
+Valores preestablecidos
+- Configuración personalizada
+  
+SIGUIENTE
+
+Acceso al Servicio:
+Rol de servicio:
+- Crear y utilizar un nuevo rol de servicio
+- EC2 key pair: `epsilon-bean-key`
+- EC2 perfil de instancia: `epsilon-rearch-beanstalk-role`
+
+SIGUIENTE
+
+VPC.
+- VPC: `la default`
+- Public IP address (**ACTIVATED**)
+- Elegimos todas las subredes de instancia.
+- Pero no marcamos ninguna en: "Elegir subredes de base de datos"
+- añadimos etiqueta, `Project` `Epsilon`
+
+SIGUIENTE.
+
+Configuración del escalado y del tráfico de instancias - opcional
+en este apartado solo vamos a tocar:
+Grupo de escalado automático
+- Tipo de entorno: `Equilibrio de carga.`
+- Instancias: `2Mín.` `4Máx.`
+- Tipo de instancia: `t2.micro`
+
+![image](https://github.com/user-attachments/assets/b4326a12-b3cb-47be-93f3-8c5b732862a5)
+
+![image](https://github.com/user-attachments/assets/0a789eed-b5a3-4c7c-b758-cce200d3a290)
+
+![image](https://github.com/user-attachments/assets/d68a10f8-4214-4d93-b5fe-113d388e0652)
+
+y ya en teoría está todo, creamos el beanstalk y si vemos el enlace:
+
+![image](https://github.com/user-attachments/assets/5220420e-47fe-40a1-b599-b2382b69c40a)
+
+>[!IMPORTANT]
+>Me da error:
+>
